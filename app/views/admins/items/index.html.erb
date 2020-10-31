@@ -1,5 +1,7 @@
 <div class="row">
-  <div class="col-xs-9">
+
+	</div>
+	<div class="col-xs-9">
 		<h2>商品一覧</h2>
 		<table class="table table-hover table-inverse">
 			<thead>
@@ -12,17 +14,18 @@
 				</tr>
 			</thead>
 			<tbody>
-			 <% @items.each do |item| %>
-			 <tr>
-			   <td><%= item.id %></td>
-			   <td>
-			   	<%= item.name %>
-			   	<%= link_to admins_item_path(item)%>
-			   	</td>
-			   <td><%= item.price %></td>
-			   <td>ケーキ</td>
-			   <td>販売中</td>
-			 </tr>
+				<% @items.each do |item| %>
+			  	<tr>
+			    	<td><%= item.id %></td>
+			   		<td><%= link_to item.name, admins_item_path(item) %></td>
+			   		<td><%= item.price.to_s(:delimited) %></td>
+			   		<td><%= item.genre_id %></td>
+			   		<% if item.is_status? %>
+			   			<td>販売中</td>
+        		<% else %>
+        			<td>販売中止</td>
+        		<% end %>
+			 		</tr>
 			 <% end %>
 			</tbody>
 		<% paginate @items%>

@@ -1,5 +1,5 @@
 <h2>商品編集</h2>
-<%= form_with model: @item, url: admins_items_path(@item), local: true do |f| %>
+<%= form_with model: @item, url: admins_item_path(@item), local: true do |f| %>
 <div class="img_field">
   <%= attachment_image_tag(@item, :image, size: "300x300", format: 'jpeg', fallback: "no-image.png") %>
   <%= f.attachment_field :image %>
@@ -11,4 +11,14 @@
 <%= f.text_area :explanation %>
 
 <h4>ジャンル</h4>
-<%= f.collection_select(:genre_id, @genres, :id, :name, {prompt: "選択してください"}) %>
+<!--%= f.collection_select(:genre_id, @genres, :id, :name, {prompt: "選択してください"}) %-->
+
+<h4>税抜価格</h4>
+<%= f.text_field :price%>円
+
+<h4>販売ステータス</h4>
+<%= f.select :is_status,[['販売中', true],['販売中止', false]], {prompt: "選択してください"} %>
+
+<%= f.submit "変更を保存", class: "btn btn-primary" %>
+
+<% end %>
