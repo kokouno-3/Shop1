@@ -1,20 +1,31 @@
 Rails.application.routes.draw do
   devise_for :admins
-  devise_for :customers
-  root "homes#top"
-  get "/about" => "public/homes#about"
+  devise_for :customers, skip: :all
+  devise_scope :customer do
+  get 'customers/sign_in',to: 'publics/sessions#new'
+  post 'customers/sign_in',to: 'publics/sessions#create'
+  delete 'customers/sign_out',to: 'publics/sessions#destroy'
+  get 'customers/sign_up', to: 'publics/registrations#new'
+  patch 'customers', to: 'publics/registrations#update'
+  put 'customers', to: 'publics/registrations#update'
+  delete 'customers', to: 'publics/registrations#update'
+  post 'customers', to: 'publics/registrations#create'
+  end
+
+  root "publics/homes#top"
+  get "/about" => "publics/homes#about"
   resources :customers, only:[:edit, :show, :update]
-  get "/customers/unsubscribe" => "public/customers#unsubscribe"
-  patch "/customers/withdraw" => "public/customers#withdraw"
+  get "/customers/unsubscribe" => "publics/customers#unsubscribe"
+  patch "/customers/withdraw" => "publics/customers#withdraw"
   resources :items, only:[:index, :show]
   resources :carts, only:[:index, :update, :destroy, :create]
-  delete "/cart_items/destroy_all" => "public/cart_items/destroy_all"
+  delete "/cart_items/destroy_all" => "publics/cart_items/destroy_all"
   resources :orders, only:[:new, :create, :index, :show]
-  post "/orders/confirm" => "public/orders#confirm"
-  get "/orders/complete" => "public/orders#complete"
+  post "/orders/confirm" => "publics/orders#confirm"
+  get "/orders/complete" => "publics/orders#complete"
   resources :addresses, only:[:index, :create, :edit, :destroy, :update]
 
-  namespace :admin do
+  namespace :admins do
   get "/" => "homes#top"
   resources :customers, only:[:index, :show, :edit, :update]
   resources :genres, only:[:index, :create, :edit, :update]
