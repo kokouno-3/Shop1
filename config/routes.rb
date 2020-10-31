@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :admins
   devise_for :customers
-  root "homes#top"
+  root "publics/homes#top"
   get "/about" => "public/homes#about"
   resources :customers, only:[:edit, :show, :update]
   get "/customers/unsubscribe" => "public/customers#unsubscribe"
@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get "/orders/complete" => "public/orders#complete"
   resources :addresses, only:[:index, :create, :edit, :destroy, :update]
 
-  namespace :admin do
+  namespace :admins do
   get "/" => "homes#top"
   resources :customers, only:[:index, :show, :edit, :update]
   resources :genres, only:[:index, :create, :edit, :update]

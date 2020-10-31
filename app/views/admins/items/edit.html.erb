@@ -1,2 +1,14 @@
-<h1>Items#edit</h1>
-<p>Find me in app/views/items/edit.html.erb</p>
+<h2>商品編集</h2>
+<%= form_with model: @item, url: admins_items_path(@item), local: true do |f| %>
+<div class="img_field">
+  <%= attachment_image_tag(@item, :image, size: "300x300", format: 'jpeg', fallback: "no-image.png") %>
+  <%= f.attachment_field :image %>
+
+<h4>商品名</h4>
+<%= f.text_field :name %>
+
+<h4>商品説明</h4>
+<%= f.text_area :explanation %>
+
+<h4>ジャンル</h4>
+<%= f.collection_select(:genre_id, @genres, :id, :name, {prompt: "選択してください"}) %>

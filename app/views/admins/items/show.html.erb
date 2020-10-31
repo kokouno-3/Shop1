@@ -1,2 +1,37 @@
-<h1>Items#show</h1>
-<p>Find me in app/views/items/show.html.erb</p>
+<div class="row">
+<h2>商品詳細</h2>
+  <div class="col-xs-3">
+    <%= attachment_image_tag(@item, :image, size: "300x300", format: 'jpeg', fallback: "no-image.png") %>
+  </div>
+  <div class="col-xs-7">
+    <div>
+      <h4>商品名　　</h4>
+      <span><%= @item.name%></span>
+    </div>
+    <div>
+      <h4>商品説明　　</h4>
+      <span><%= @item.explanation%></span>
+    </div>
+    <div>
+      <h4>ジャンル　　</h4>
+      <span><%= @item.genre.genre_name%></span>
+    </div>
+    <div>
+      <h4>税込価格（税抜価格）　　</h4>
+      <span><%= @item.price%>円</span>
+    </div>
+    <div>
+      <h4>販売ステータス　　</h4>
+      <span>
+        <% if @item.is_status? %>
+        販売中
+        <% else %>
+        売り切れ
+        <% end %>
+      </span>
+    </div>
+  </div>
+  <div class="col-xs-2">
+    <%= link_to "編集する", edit_admins_item_path, class: "btn btn-primary" %>
+  </div>
+</div>
