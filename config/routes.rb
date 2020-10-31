@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
-  devise_for :admins
+  devise_for :admins, skip: :all
+  devise_scope :admin do
+   get '/admins/sign_in' => 'admins/sessions#new', as: 'new_admin_session'
+   post '/admins/sign_in' => 'admins/sessions#create', as: 'admin_session'
+   delete '/admins/sign_out' => 'admins/sessions#destroy', as: 'destroy_admin_session' 
+  end
+  # get '/admins/sign_out' => 'devise/sessions#destroy'
+  # end
   devise_for :customers
-  root "homes#top"
-  get "/about" => "public/homes#about"
+  root "publics/homes#top"
+  get "/about" => "publics/homes#about"
   resources :customers, only:[:edit, :show, :update]
   get "/customers/unsubscribe" => "public/customers#unsubscribe"
   patch "/customers/withdraw" => "public/customers#withdraw"
@@ -14,7 +21,7 @@ Rails.application.routes.draw do
   get "/orders/complete" => "public/orders#complete"
   resources :addresses, only:[:index, :create, :edit, :destroy, :update]
 
-  namespace :admin do
+  namespace :admins do
   get "/" => "homes#top"
   resources :customers, only:[:index, :show, :edit, :update]
   resources :genres, only:[:index, :create, :edit, :update]
