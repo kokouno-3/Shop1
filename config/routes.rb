@@ -7,14 +7,14 @@ Rails.application.routes.draw do
   end
   devise_for :customers, skip: :all
   devise_scope :customer do
-  get 'customers/sign_in',to: 'publics/sessions#new'
-  post 'customers/sign_in',to: 'publics/sessions#create'
-  delete 'customers/sign_out',to: 'publics/sessions#destroy'
   get 'customers/sign_up', to: 'publics/registrations#new'
+  post 'customers/sign_up', to: 'publics/registrations#create'
   patch 'customers', to: 'publics/registrations#update'
   put 'customers', to: 'publics/registrations#update'
   delete 'customers', to: 'publics/registrations#update'
-  post 'customers', to: 'publics/registrations#create'
+  get 'customers/sign_in',to: 'publics/sessions#new'
+  post 'customers/sign_in',to: 'publics/sessions#create'
+  delete 'customers/sign_out',to: 'publics/sessions#destroy'
   end
 
   root "publics/homes#top"
