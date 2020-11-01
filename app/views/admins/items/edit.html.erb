@@ -22,7 +22,7 @@
       <%= f.text_field :price, class:"form-control" %>円
 
       <h4>販売ステータス</h4>
-      <%= f.select :is_status,[['販売中', true],['販売中止', false]], {prompt: "選択してください"} %>
+      <%= f.select :is_status, [['販売中','販売中'],['販売中止', '販売中止']], {prompt: "選択してください"} %>
 
       <%= f.submit "変更を保存", class: "btn btn-primary" %>
     </div>
