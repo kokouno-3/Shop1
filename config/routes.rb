@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :admins, skip: :all
-  devise_scope :admin do
-   get '/admins/sign_in' => 'admins/sessions#new', as: 'new_admin_session'
-   post '/admins/sign_in' => 'admins/sessions#create', as: 'admin_session'
-   delete '/admins/sign_out' => 'admins/sessions#destroy', as: 'destroy_admin_session' 
-  end
+  devise_for :admins
   devise_for :customers, skip: :all
   devise_scope :customer do
   get 'customers/sign_in',to: 'publics/sessions#new'
@@ -14,12 +9,20 @@ Rails.application.routes.draw do
   patch 'customers', to: 'publics/registrations#update'
   put 'customers', to: 'publics/registrations#update'
   delete 'customers', to: 'publics/registrations#update'
-  post 'customers', to: 'publics/registrations#create'
+  post 'customers/sign_up', to: 'publics/registrations#create'
+  #customerログインパスワード変更
+  get 'customers/password/edit', to: 'devise/passwords#edit'
+  patch '/customers/password', to: 'devise/passwords#update'
+  put '/customers/password', to: 'devise/passwords#update'
   end
 
   root "publics/homes#top"
   get "/about" => "publics/homes#about"
+
+  namespace :publics do #修正箇所
   resources :customers, only:[:edit, :show, :update]
+  end
+
   get "/customers/unsubscribe" => "publics/customers#unsubscribe"
   patch "/customers/withdraw" => "publics/customers#withdraw"
   resources :items, only:[:index, :show]
