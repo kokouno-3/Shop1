@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
     #     about_path  # ログアウト後に遷移するpathを設定(customer側)
     # end
   end
+   
 
    def after_sign_in_path_for(resource)
      case resource

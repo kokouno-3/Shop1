@@ -2,15 +2,14 @@ Rails.application.routes.draw do
   devise_for :admins
   devise_for :customers, skip: :all
   devise_scope :customer do
-  get 'customers/sign_in',to: 'publics/sessions#new'
-  post 'customers/sign_in',to: 'publics/sessions#create'
-  delete 'customers/sign_out',to: 'publics/sessions#destroy'
   get 'customers/sign_up', to: 'publics/registrations#new'
+  post 'customers/sign_up', to: 'publics/registrations#create'
   patch 'customers', to: 'publics/registrations#update'
   put 'customers', to: 'publics/registrations#update'
   delete 'customers', to: 'publics/registrations#update'
-  post 'customers/sign_up', to: 'publics/registrations#create'
-  #customerログインパスワード変更
+  get 'customers/sign_in',to: 'publics/sessions#new'
+  post 'customers/sign_in',to: 'publics/sessions#create'
+  delete 'customers/sign_out',to: 'publics/sessions#destroy'
   get 'customers/password/edit', to: 'devise/passwords#edit'
   patch '/customers/password', to: 'devise/passwords#update'
   put '/customers/password', to: 'devise/passwords#update'
