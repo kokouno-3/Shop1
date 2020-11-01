@@ -11,6 +11,50 @@
 
   <body>
     <div class="container">
+  <header>
+
+  <div class="header-title">
+    <strong>LOGO</strong>
+  </div>
+
+  <div class="header-nav-div">
+    <% if customer_signed_in? %>
+      <li class="header-nav">
+        <%= link_to "マイページ", publics_customer_path(current_customer.id), class:"nav-list" %>
+      </li>
+
+       <li class="header-nav">
+         <%= link_to "商品一覧", "#", class:"nav-list" %>
+       </li>
+
+       <li class="header-nav">
+         <%= link_to "カート", "#", class:"nav-list" %>
+       </li>
+
+       <li class="header-nav">
+         <%= link_to "ログアウト", customers_sign_out_path, method: :delete, class:"nav-list" %>
+       </li>
+
+    <% else %>
+       <li class="header-nav">
+         <%= link_to "About", about_path, class:"nav-list" %>
+       </li>
+
+       <li class="header-nav">
+         <%= link_to "商品一覧", "#", class:"nav-list" %>
+       </li>
+
+       <li class="header-nav">
+         <%= link_to "新規登録", customers_sign_up_path, class:"nav-list" %>
+       </li>
+
+        <li class="header-nav">
+         <%= link_to "ログイン", customers_sign_in_path, class:"nav-list" %>
+       </li>
+     <% end %>
+  </div>
+  </header>
+
     <%= yield %>
     </div>
   </body>

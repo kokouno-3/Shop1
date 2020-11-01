@@ -1,7 +1,5 @@
-<h2>新規会員登録</h2>
-
-<%= form_with model: @customer, url: customers_sign_up_path, id: 'new_user', class: 'new_user', local: true do |f| %>
-  <%= render "publics/shared/error_messages", resource: resource %>
+<h2>登録情報編集</h2>
+<%= form_with model: @customer, url: edit_publics_customer_path(@customer), local: true do |f| %>
 
   <div class="field">
     <%= f.label :"（姓)" %><br />
@@ -43,28 +41,8 @@
     <%= f.text_field :phonenumber, autofocus: true, autocomplete: "address" %>
     </div>
 
-  <div class="field">
-    <%= f.label :"パスワード(6文字以上)" %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+    <%= f.submit '編集内容を保存する' %>
 
-  <div class="field">
-    <%= f.label :"パスワード(確認用)" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <% end %>
 
-  <div class="actions">
-    <%= f.submit "新規登録" %>
-  </div>
-<% end %>
-
-  <h2>既に登録済みの方</h2>
-  <div>
-  <%= link_to "こちら", customers_sign_in_path %>からログインしてください。
-  </div>
-
-<!--後程修正-->
-<!--<= render "publics/shared/links" %>-->
+  <%= link_to "退会する", customers_unsubscribe_path %>
