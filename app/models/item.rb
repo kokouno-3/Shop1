@@ -4,6 +4,11 @@ class Item < ApplicationRecord
   belongs_to :genre, optional: true
   attachment :image
 
-  #validates :name, :explanation, :price, presence: true
+  enum is_status: {
+    '販売中': true,
+    '販売中止': false
+  }
+
+  validates :name, :explanation, :price, presence: true
 
 end
