@@ -6,6 +6,6 @@ class Genre < ApplicationRecord
     無効: false
   }
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
 
 end
