@@ -1,2 +1,47 @@
-<h1>Addresses#index</h1>
-<p>Find me in app/views/addresses/index.html.erb</p>
+<h2>配送先登録/一覧</h2>
+  <%= form_with(model:[@customer, @address], url: publics_customer_addresses_path, local: true) do |f| %>
+    <p>郵便番号(ハイフンなし)</p>
+      <%= f.text_field :postcode %>
+
+    <p>住所</p>
+      <%= f.text_field :addresses %>
+
+    <p>宛名</p>
+      <%= f.text_field :name %>
+      <%= f.submit '登録する' %>
+
+  <% end %>
+
+<table class = "table">
+  <thead>
+    <tr>
+      <td>郵便番号</td>
+      <td>住所</td>
+      <td>宛名</td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+      <td><%= @customer.postcode %></td>
+      <td><%= @customer.address %></td>
+      <td><%= @customer.last_name %><<%= @customer.first_name %></td>
+      <td>
+          <%= link_to "編集する", about_path %>
+          <%= link_to "削除する", "#" %>
+      </td>
+      </tr>
+  <% @addresses.each do |address| %>
+    <tr>
+      <td><%= address.postcode %></td>
+      <td><%= address.address %></td>
+      <td><%= address.name %></td>
+      <td>
+        <%= link_to "編集する", "#" %>
+        <%= link_to "削除する", "#" %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
