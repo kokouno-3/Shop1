@@ -3,7 +3,9 @@
     <tbody>
     <tr>
         <th>顧客ID</th>
-        <th><%= @customer.id %>  <%= @customer.is_deleted %></th>
+        <th>
+            <label for="name"><%= @customer.id %>   <span class="badge badge-danger"><%= @customer.is_deleted %></span></label>
+        </th>
     </tr>
     <tr>
         <th>氏名</th>

@@ -4,7 +4,7 @@
     <title>Shop1</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap-theme.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
     <script src="https://kit.fontawesome.com/fc6aa7a24c.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -13,7 +13,11 @@
   <body>
     <div class="container">
 
+    <% content_for :content do %>
+    <%= render 'layouts/publics/header' %>
     <%= yield %>
+    <% end %>
+    <%= render template: "layouts/application" %>
     </div>
   </body>
 </html>

@@ -1,4 +1,5 @@
 class Publics::CustomersController < ApplicationController
+  layout 'publics/header'
 
   def show
     @customer = Customer.find(params[:id])

@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :admins
+  devise_for :admins, skip: :all
+  devise_scope :admin do
+  get 'admins/sign_in',to: 'admins/sessions#new'
+  post 'admins/sign_in',to: 'admins/sessions#create'
+  delete 'admins/sign_out',to: 'admins/sessions#destroy'
+  end 
+  
   devise_for :customers, skip: :all
   devise_scope :customer do
   get 'customers/sign_up', to: 'publics/registrations#new'
@@ -20,11 +26,12 @@ Rails.application.routes.draw do
 
   namespace :publics do #修正箇所
   resources :customers, only:[:edit, :show, :update]
+  resources :items, only:[:index, :show]
   end
 
   get "/customers/unsubscribe" => "publics/customers#unsubscribe"
   patch "/customers/withdraw" => "publics/customers#withdraw"
-  resources :items, only:[:index, :show]
+  
   resources :carts, only:[:index, :update, :destroy, :create]
   delete "/cart_items/destroy_all" => "publics/cart_items/destroy_all"
   resources :orders, only:[:new, :create, :index, :show]

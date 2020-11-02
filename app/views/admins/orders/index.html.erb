@@ -1,2 +1,28 @@
-<h1>Orders#index</h1>
-<p>Find me in app/views/orders/index.html.erb</p>
+<h2>注文履歴一覧</h2>
+<table class="table table-hover table-inverse">
+  <thead class="thead-light">
+  <tr>
+    <th>購入日時</th>
+    <th>購入者</th>
+    <th>注文個数</th>
+    <th>注文ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+    <tr>
+      <td>
+        <%= link_to admins_order_path(customer) do %>
+        <%= order.created_at %>
+        <% end %>
+        </td>
+      <td>
+        <%= customer.last_name %><%= customer.first_name %>
+      </td>
+      <td><%= order.order_details.amount %></td>
+      <td><%= order.status %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @orders %>

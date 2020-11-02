@@ -5,10 +5,18 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource)
     # case resource
       # when Admin
-         new_admin_session_path # ログアウト後に遷移するpathを設定(admin側)
+         admins_sign_in_path # ログアウト後に遷移するpathを設定(admin側)
     #   when Customer
     #     about_path  # ログアウト後に遷移するpathを設定(customer側)
     # end
+  end
+  
+  def after_sign_out_path_for(resource_or_scope)
+    if resource_or_scope == :admin
+      admins_sign_in_path
+    else
+      about_path
+    end
   end
    
 
