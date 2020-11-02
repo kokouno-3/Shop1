@@ -1,4 +1,6 @@
 class Admins::GenresController < ApplicationController
+    layout 'admins/header'
+
   def index
     @genres = Genre.all
     @genre = Genre.new
@@ -34,4 +36,5 @@ class Admins::GenresController < ApplicationController
   def genre_params
     params.require(:genre).permit(:name, :is_status)
   end
+  
 end

@@ -1,4 +1,5 @@
 class Publics::HomesController < ApplicationController
+  layout 'publics/header'
   def top
   end
 

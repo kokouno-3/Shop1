@@ -1,4 +1,5 @@
 class Publics::OrdersController < ApplicationController
+  layout 'publics/header'
   def new
   end
 

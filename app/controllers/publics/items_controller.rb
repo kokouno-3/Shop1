@@ -1,4 +1,5 @@
 class Publics::ItemsController < ApplicationController
+  layout 'publics/header'
   def index
   end
 

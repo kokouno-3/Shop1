@@ -2,13 +2,12 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller? #(customer側の新規登録情報を保存)
 
   def after_sign_out_path_for(resource_or_scope)
-    if resource_or_scope == :admin_admin_customer
-      new_admin_session_path # ログアウト後に遷移するpathを設定(admin側)
+    if resource_or_scope == :admin
+      admin_sign_in_path # ログアウト後に遷移するpathを設定(admin側)
     else
       root_path # ログアウト後に遷移するpathを設定(customer側)
     end
   end
-
 
    def after_sign_in_path_for(resource)
      case resource
