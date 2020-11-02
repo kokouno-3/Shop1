@@ -18,8 +18,13 @@ Rails.application.routes.draw do
   root "publics/homes#top"
   get "/about" => "publics/homes#about"
 
-  namespace :publics do #修正箇所
-  resources :customers, only:[:edit, :show, :update]
+  namespace :publics do
+  resources :orders, only:[:new, :create, :index, :show]
+  post "/orders/confirm" => "publics/orders#confirm"
+  get "/orders/complete" => "publics/orders#complete"
+  resources :customers, only:[:edit, :show, :update] do
+      resources :addresses, only:[:index, :create, :edit, :destroy, :update]
+    end
   end
 
   get "/customers/unsubscribe" => "publics/customers#unsubscribe"
@@ -27,10 +32,7 @@ Rails.application.routes.draw do
   resources :items, only:[:index, :show]
   resources :carts, only:[:index, :update, :destroy, :create]
   delete "/cart_items/destroy_all" => "publics/cart_items/destroy_all"
-  resources :orders, only:[:new, :create, :index, :show]
-  post "/orders/confirm" => "publics/orders#confirm"
-  get "/orders/complete" => "publics/orders#complete"
-  resources :addresses, only:[:index, :create, :edit, :destroy, :update]
+
 
   namespace :admins do
   get "/" => "homes#top"
