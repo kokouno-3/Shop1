@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-xs-2">
+    <!--ジャンル検索部分テンプレート-->
+  </div>
+  <div class="col-xs-10">
+  <h2 style="margin-top: 50px;">商品一覧</h2>
+  <span>(全<%= @items.count %>件)</span>
+
+  <% @items.each do |item| %>
+      <div class="item-container">
+        <%= link_to publics_item_path(item) do %>
+          <div class="img_field">
+             <%= attachment_image_tag @item, :image, size: "250x250", format: 'jpeg', fallback: "no-image.png" %>
+          </div>
+          <div class="item-field">
+            <p><%= item.name %></p>
+
+        <% if item.is_status == '販売中' %>
+          <p>¥<%= item.price.to_s(:delimited) %></p>
+        <% else item.is_status == '販売中止' %>
+          <p>売切れ</p>
+        <% end %>
+          </div>
+      <% end %>
+  <% end %>
+  </div>
+</div>
