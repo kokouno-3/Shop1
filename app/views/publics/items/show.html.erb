@@ -1,6 +1,6 @@
 <div class="row">
-<div class="col-xs-2">
-    <!--ジャンル検索部分テンプレート-->
+<div class="col-xs-3">
+    <%= render "genre", genres: @genres %>
   </div>
   <div class="col-xs-5">
     <%= attachment_image_tag @item, :image, size: "250x250", format: 'jpeg', fallback: "no-image.png" %>
@@ -12,10 +12,18 @@
     <p><%= @item.explanation %></p>
     <h3>¥<%= (@item.price.* 1.1).round.to_s(:delimited) %><span>(税込)</span></h3>
   </div>
-  <div class="col-xs-2">
-    <%= form_with model: @carts, url: carts_path(@cart), local: true do |f| %>
-    <%= f.number_field :amount, min: 0, max: 10 %>個
-    <%= f.submit "カートに入れる", class: "btn btn-primary" %>
+  <div class="row">
+    <% if @item.is_status == '販売中' %>
+      <% if @item.genre.is_status == '有効' %>
+        <%= form_with model: @carts, url: carts_path(@cart), local: true do |f| %>
+          <%= f.number_field :amount, min: 0, max: 10, include_blank: "個数選択" %>個
+          <%= f.submit "カートに入れる", class: "btn btn-primary" %>
+        <% end %>
+      <% else %>
+        <h2>売切れ</h2>
+      <% end %>
+    <% elsif @item.is_status == '販売中止' %>
+      <h2>売切れ</h2>
     <% end %>
   </div>
 </div>

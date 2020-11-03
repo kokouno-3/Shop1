@@ -5,13 +5,18 @@ class Publics::ItemsController < ApplicationController
   end
 
   def show
-    @items = Item.all.page(params[:page]).per(8)
     @item = Item.find(params[:id])
+    @genre = Genre.find(params[:id])
   end
   
+  def genre_items
+    @items =@genre.items.all
+    @genre = Genre.find(params[:id])
+  end
+
   private
   def item_params
     params.require(:item).permit(:name, :explanation, :price, :image, :is_status)
   end
-  
+
 end
