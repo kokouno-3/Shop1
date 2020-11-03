@@ -13,7 +13,7 @@
     <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>  <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
   </div>
   <br>
-        
+
   <div class="field">
     <%= f.label :"フリガナ" %>
     <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "first_name" %>  <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "last_name_kana" %>
@@ -37,18 +37,18 @@
     <%= f.text_field :phonenumber, autofocus: true, autocomplete: "address" %>
     </div>
     <br>
-  
+
     <div class="field">
     <%= f.label :"メールアドレス" %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     </div>
     <br>
-    
+
     <div class="field">
     <%= f.label :"会員ステータス" %>
     <%= f.radio_button :is_deleted, "有効" %>  有効  <%= f.radio_button :is_deleted, "退会済み" %>  退会済み
     </div>
-    
+
   <div class="actions">
     <%= f.submit "変更を保存する", class: "btn btn-primary" %>
   </div>

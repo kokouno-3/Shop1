@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   get 'admins/sign_in',to: 'admins/sessions#new'
   post 'admins/sign_in',to: 'admins/sessions#create'
   delete 'admins/sign_out',to: 'admins/sessions#destroy'
-  end 
-  
+  end
+
   devise_for :customers, skip: :all
   devise_scope :customer do
   get 'customers/sign_up', to: 'publics/registrations#new'
@@ -26,9 +26,9 @@ Rails.application.routes.draw do
 
   namespace :publics do
   resources :items, only:[:index, :show]
+  get "/orders/complete" => "orders#complete"
+  post "/orders/comfirm" => "orders#comfirm"
   resources :orders, only:[:new, :create, :index, :show]
-  post "/orders/confirm" => "publics/orders#confirm"
-  get "/orders/complete" => "publics/orders#complete"
   resources :customers, only:[:edit, :show, :update] do
       resources :addresses, only:[:index, :create, :edit, :destroy, :update]
     end
@@ -37,7 +37,7 @@ Rails.application.routes.draw do
 
   get "/customers/unsubscribe" => "publics/customers#unsubscribe"
   patch "/customers/withdraw" => "publics/customers#withdraw"
-  
+
   resources :carts, only:[:index, :update, :destroy, :create]
   delete "/cart_items/destroy_all" => "publics/cart_items/destroy_all"
 

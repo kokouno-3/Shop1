@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_out_path_for(resource_or_scope)
     if resource_or_scope == :admin
-      admin_sign_in_path # ログアウト後に遷移するpathを設定(admin側)
+      admins_sign_in_path # ログアウト後に遷移するpathを設定(admin側)
     else
       root_path # ログアウト後に遷移するpathを設定(customer側)
     end
@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
        when Admin
          admins_path # ログイン後に遷移するpathを設定(admin側)
        when Customer
-         admins_items_path  # ログイン後に遷移するpathを設定(customer側)
+         publics_items_path  # ログイン後に遷移するpathを設定(customer側)
      end
    end
 
