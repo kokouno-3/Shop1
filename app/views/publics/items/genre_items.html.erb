@@ -3,10 +3,8 @@
     <%= render "genre", genres: @genres %>
   </div>
   <div class="col-xs-9">
-    <h2 style="margin-top: 50px;">商品一覧</h2>
+    <h2 style="margin-top: 50px;"><%= @genre.name%>の商品一覧</h2>
     <span>(全<%= @items.count %>件)</span>
-    <%= render 'items_index', items: @items %>
-
+    <%= render "index", items: @items %>
   </div>
-  <%= paginate(@items) %>
 </div>

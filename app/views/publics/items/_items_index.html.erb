@@ -1,0 +1,20 @@
+<% @items.each do |item| %>
+      <div class="item-container">
+        <%= link_to publics_item_path(item.id) do %>
+          <div class="img_field">
+            <div class="col-xs-6">
+             <%= attachment_image_tag item, :image, size: "250x250", format: 'jpeg', fallback: "no-image.png" %>
+            </div>
+          </div>
+          <div class="item-field">
+            <div class="col-xs-6">
+            <p><%= item.name %></p>
+            <% if item.is_status == '販売中' %>
+              <p>¥<%= item.price.to_s(:delimited) %></p>
+            <% else item.is_status == '販売中止' %>
+              <p>売切れ</p>
+            <% end %>
+            </div>
+          </div>
+      <% end %>
+  <% end %>

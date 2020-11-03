@@ -3,10 +3,12 @@ class Admins::ItemsController < ApplicationController
    layout 'admins/header'
   def index
     @items = Item.all.page(params[:page]).per(10)
+    @genres= Genre.all
   end
 
   def new
     @item = Item.new
+    @genres= Genre.all
   end
 
   def create
@@ -24,6 +26,7 @@ class Admins::ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
+    @genres= Genre.all
   end
 
   def update
