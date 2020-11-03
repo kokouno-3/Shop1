@@ -1,4 +1,5 @@
 class Publics::CustomersController < ApplicationController
+  before_action :authenticate_customer!
   layout 'publics/header'
 
   def show
