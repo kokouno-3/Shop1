@@ -10,4 +10,34 @@ Admin.create!(
    password: 'kokou3'
 )
 
-Genre.create([{name: "ケーキ"}, {name: "プリン"}, {name: "焼き菓子"}, {name: "キャンディ"}])
+Genre.create!(name: "ケーキ")
+Genre.create!(name: "プリン")
+Genre.create!(name: "焼き菓子")
+Genre.create!(name: "キャンディ")
+
+Item.create!(
+  [
+   genre_id: '1',
+   name: 'チーズケーキ',
+   explanation: 'ああああああ',
+   price: '1200',
+   image_id: '',
+   is_status: '販売中',
+  ]
+)
+Item.create!(
+   genre_id: '3',
+   name: 'たいやき',
+   explanation: 'ああああああ',
+   price: '400',
+   image_id: '',
+   is_status: '販売中',
+)
+Item.create!(
+   genre_id: '4',
+   name: 'べっこうあめ',
+   explanation: 'ああああああ',
+   price: '600',
+   image_id: '',
+   is_status: '販売中',
+)

@@ -26,6 +26,7 @@ Rails.application.routes.draw do
 
   namespace :publics do
   resources :items, only:[:index, :show]
+  get 'genre_items/:id' => "items#genre_items", as: "genre_items"
   get "/orders/complete" => "orders#complete"
   post "/orders/comfirm" => "orders#comfirm"
   resources :orders, only:[:new, :create, :index, :show]

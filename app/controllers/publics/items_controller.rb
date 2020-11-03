@@ -1,6 +1,6 @@
 class Publics::ItemsController < ApplicationController
   before_action :authenticate_customer!
-  layout 'publics/header' 
+  layout 'publics/header'
   def index
     @items = Item.all.page(params[:page]).per(8)
   end
@@ -9,10 +9,10 @@ class Publics::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @genre = Genre.find(params[:id])
   end
-  
+
   def genre_items
-    @items =@genre.items.all
     @genre = Genre.find(params[:id])
+    @items = @genre.items.all
   end
 
   private

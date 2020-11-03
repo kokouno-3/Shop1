@@ -7,7 +7,7 @@
     <% if genre.is_status == '有効' %>
     <tr>
       <td>
-        <%= link_to genre.name, genre_items_path(genre) %> <br>
+        <%= link_to genre.name, publics_genre_items_path(genre) %> <br>
       </td>
     </tr>
     <% end %>
