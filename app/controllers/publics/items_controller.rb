@@ -1,5 +1,6 @@
 class Publics::ItemsController < ApplicationController
-  layout 'publics/header'
+  before_action :authenticate_customer!
+  layout 'publics/header' 
   def index
   end
 
