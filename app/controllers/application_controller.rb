@@ -18,17 +18,6 @@ class ApplicationController < ActionController::Base
          publics_items_path  # ログイン後に遷移するpathを設定(customer側)
      end
    end
-   
-   helper_method :current_cart
-
-  def current_cart
-    if session[:cart_id]
-      @cart = Cart.find(session[:cart_id])
-    else
-      @cart = Cart.create
-      session[:cart_id] = @cart.id
-    end
-  end
 
   protected
 

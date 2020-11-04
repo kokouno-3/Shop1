@@ -15,8 +15,9 @@
   <div class="row">
     <% if @item.is_status == '販売中' %>
       <% if @item.genre.is_status == '有効' %>
-        <%= form_with model: @carts, url: carts_path(@cart), local: true do |f| %>
+        <%= form_with model: @cart, url: publics_carts_path, local: true do |f| %>
           <%= f.number_field :amount, min: 0, max: 10, include_blank: "個数選択" %>個
+          <%= f.hidden_field :item_id, :value => @item.id %>
           <%= f.submit "カートに入れる", class: "btn btn-primary" %>
         <% end %>
       <% else %>
