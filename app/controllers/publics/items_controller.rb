@@ -1,5 +1,5 @@
 class Publics::ItemsController < ApplicationController
-  before_action :authenticate_customer!
+  # before_action :authenticate_customer!
   layout 'publics/header'
   def index
     @items = Item.all.page(params[:page]).per(8)

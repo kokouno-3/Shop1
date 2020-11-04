@@ -12,7 +12,7 @@ class Customer < ApplicationRecord
     有効: false,
     退会済み: true
   }
-  #修正箇所ーーーーーdeletedがtrueの場合はログイン可能
+  #修正箇所ーーーーーdeletedがfalseの場合はログイン可能
   def active_for_authentication?
   super && (self.is_deleted == '有効')
   end
