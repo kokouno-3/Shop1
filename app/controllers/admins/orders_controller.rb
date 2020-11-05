@@ -6,11 +6,14 @@ class Admins::OrdersController < ApplicationController
   end
 
   def show
+    @order = Order.all
+    @order_details = @order.order_details.all
+		@sum = 0
   end
 
   def update
   end
-  
+
   private
   def order_params
     params.require(:order).permit(:customer_id, :shipping_cost, :pay_money, :pay_way, :name, :postcode, :address, :status)

@@ -17,11 +17,15 @@
       <h2>オススメ商品</h2>
         <% @items.each do |item| %>
         <%= link_to publics_item_path(item) do %>
-          <div class="list-box" style="display:inline-block;">
-            <%= attachment_image_tag item, :image, size: "250x250", format: 'jpeg', fallback: "no-image.png" %>
+          <div class="img_field" style="display:inline-block;">
+            <div class="col-xs-6">
+              <%= attachment_image_tag item, :image, size: "250x250", format: 'jpeg', fallback: "no-image.png" %>
+            </div>
             <div class="item-field">
-              <p><%= item.name %></p>
-              <p>(税込)¥<%= (item.price.* 1.1).round.to_s(:delimited) %></p>
+              <div class="col-xs-6">
+                <p><%= item.name %></p>
+                <p>(税込)¥<%= (item.price.* 1.1).round.to_s(:delimited) %></p>
+              </div>
             </div>
           </div>
         <% end %>

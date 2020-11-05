@@ -30,7 +30,6 @@ class Publics::OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
   end
 
   private

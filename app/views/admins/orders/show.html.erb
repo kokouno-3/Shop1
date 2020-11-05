@@ -59,7 +59,7 @@
 <tbody>
   <tr>
     <th>商品合計</th>
-    <!--商品合計のやり方、要検討です-->
+    <!--商品合計のやり方、要検討です。mergeした後に動作確認＆修正予定です。（2020/11/5）-->
     <td>
       <%= @order_details.each do |o| %>
         <% sub_total = (order_detai.praice * order_detail.amount) %>

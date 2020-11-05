@@ -19,7 +19,7 @@ class Publics::SessionsController < Devise::SessionsController
   #   super
   # end
 
-# protected #退会ユーザーはログイン不可
+  protected #退会ユーザーはログイン不可
     def reject_customers
       customer = Customer.find_by(email: params[:customer][:email].downcase)
       if customer
