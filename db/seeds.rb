@@ -10,4 +10,4 @@ Admin.create!(
    password: 'kokou3'
 )
 
-Genre.create([{name: "ケーキ"}, {name: "プリン"}, {name: "焼き菓子"}, {name: "キャンディ"}])
+Genre.create!([{name: "ケーキ"}, {name: "プリン"}, {name: "焼き菓子"}, {name: "キャンディ"}])
