@@ -26,14 +26,14 @@ Rails.application.routes.draw do
 
   namespace :publics do
   resources :items, only:[:index, :show]
+  get 'genre_items/:id' => "items#genre_items", as: "genre_items"
   get "/orders/complete" => "orders#complete"
   post "/orders/comfirm" => "orders#comfirm"
   resources :orders, only:[:new, :create, :index, :show]
   resources :carts, only:[:index, :update, :destroy, :create]
   delete "/cart_items/destroy_all" => "publics/cart_items/destroy_all"
-  resources :customers, only:[:edit, :show, :update] do
-      resources :addresses, only:[:index, :create, :edit, :destroy, :update]
-    end
+  resources :customers, only:[:edit, :show, :update] 
+  resources :addresses, only:[:index, :create, :edit, :destroy, :update]
 
   end
 
