@@ -20,10 +20,12 @@ class Publics::CustomersController < ApplicationController
   end
 
   def withdraw
-    @customer = Customer.find(params[:id])
-    @customer.update(is_deleted: true)
+   @customer = current_customer
+   @customer.update(is_deleted: '退会済み')
+   #@customer = Customer.find(params[:id])
+   #@customer.update(is_deleted: true)
     reset_session
-    redirect_to root_path
+    redirect_to customers_sign_in_path
   end
 
 
