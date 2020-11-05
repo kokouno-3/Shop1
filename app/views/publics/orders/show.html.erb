@@ -1,2 +1,46 @@
-<h1>Orders#show</h1>
-<p>Find me in app/views/orders/show.html.erb</p>
+<br>
+<br>
+<br>
+<h2>注文履歴詳細</h2>
+<br>
+<h4>注文情報</h4>
+<table class="table table-bordered">
+  <tr><th class="active">注文日</th><td><%= @order.created_at %></td></tr>
+  <tr><th class="active">配送先</th><td><%= @order.postcode %><br><%= @order.address %><br><%= @order.name %></td></tr>
+  <tr><th class="active">支払方法</th><td><%= @order.pay_way %></td></tr>
+  <tr><th class="active">ステータス</th><td><%= @order.status %></td></tr>
+  
+  <h4>請求情報</h4>
+  <tr><th class="active">商品合計</th><td><%=  %></td></tr>
+  <tr><th class="active">配送料</th><td><%=  %></td></tr>
+  <tr><th class="active" style="font-weight: 100;">ご請求額</th><td><%=  %></td></tr>
+  
+  <h4>注文内容</h4>
+  <table>
+    <thead>
+      <tr>
+        <th class="active">商品</th>
+        <th class="active">単価（税込）</tr>
+        <th class="active">個数</tr>
+        <th class="active">小計</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @order.each do |order| %>
+      <tr>
+        <td>
+          <%= order.item.name %>
+        </td>
+        <td>
+          <%= (order.item.price.* 1.1).round.to_s(:delimited)%>
+        </td>
+        <td>
+          <%= order.cart.amount %>
+        </td>
+        <td>
+          <%= (order.item.price.* 1.1.* @cart.amount).round.to_s(:delimited)%>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
