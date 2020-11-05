@@ -3,6 +3,7 @@ class Publics::OrdersController < ApplicationController
   layout 'publics/header'
   def new
     @order = Order.new
+    @addresses = Address.all
     @customer = current_customer
     @customers = Customer.all
   end
@@ -11,9 +12,17 @@ class Publics::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @customer = current_customer
       if :order == 1
-        @cusromer = current_customer
+        @order.postcode = @customer[:postcode]
+        @order.address = @customer[:address]
+        @order.name = @customer[:name]
+      elsif :order == 2
+        @order.postcode = @address[:postcode]
+        @order.address = @address[:address]
+        @order.name = @address[:name]
       elsif :order == 3
-        @orders = Order.find(params[:id])
+        @order.postcode = params[:postcode]
+        @order.address = params[:address]
+        @order.name = params[:name]
       end
   end
 

@@ -8,35 +8,39 @@
 
   <div class="field">
       <%= f.label :"お届け先" %>
-    <div><%= f.radio_button :order,1 %>ご自身の住所
+    <div><%= f.radio_button :order, 1 %>ご自身の住所
+         <%= f.hidden_field :order, value: 1 %>
          <%= @customer.postcode %><%= @customer.address %>
          <%= @customer.last_name %><%= @customer.first_name %>
     </div>
 
-  <div><%= f.radio_button :order, 2 %>登録済住所から選択</div>
+    <div><%= f.radio_button :order, 2 %>登録済住所から選択</div>
+         <%= f.hidden_field :order, value: 2 %>
+         <%= f.collection_select :order, @addresses, :id, :shipping_info %>
 
-  <div><%= f.radio_button :order, 3 %>新しいお届け先</div>
+    <div><%= f.radio_button :order, 3 %>新しいお届け先</div>
+         <%= f.hidden_field :order, value: 3 %>
 
   <div class="field">
          <%= f.label :"郵便番号(ハイフンなし)" %>
          <%= f.text_field :postcode, autofocus: true, autocomplete: "postcode" %>
-   </div>
-   <br>
-
-    <div class="field">
-         <%= f.label :"住所" %>
-         <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
-    </div>
+  </div>
     <br>
 
-    <div class="field">
+  <div class="field">
+         <%= f.label :"住所" %>
+         <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
+  </div>
+    <br>
+
+  <div class="field">
          <%= f.label :"宛名" %>
          <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-    </div>
+  </div>
 
     <div class="actions">
          <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
     </div>
-</div>
+  </div>
 
 <% end %>
