@@ -27,15 +27,20 @@ class Publics::OrdersController < ApplicationController
   end
 
   def index
+    @customer = current_customer
+    @orders = @customer.orders.all
   end
 
   def show
+    @customer = current_customer
+    @orders = @customer.orders.all
+    @order = Order.find(params[:id])
   end
 
   private
 
   def order_params
-    params.require(:order).permit(:postcode, :address, :name,)
+    params.require(:order).permit(:postcode, :address, :name, :customer_id, :shipping_cost, :pay_money, :pay_way, :status)
   end
 
 end
