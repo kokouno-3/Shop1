@@ -10,10 +10,6 @@ Admin.create!(
    password: 'kokou3'
 )
 
-Genre.create!(name: "ケーキ")
-Genre.create!(name: "プリン")
-Genre.create!(name: "焼き菓子")
-Genre.create!(name: "キャンディ")
 
 Item.create!(
   [
@@ -41,3 +37,5 @@ Item.create!(
    image_id: '',
    is_status: '販売中',
 )
+
+Genre.create!([{name: "ケーキ"}, {name: "プリン"}, {name: "焼き菓子"}, {name: "キャンディ"}])
