@@ -1,2 +1,80 @@
-<h1>Orders#show</h1>
-<p>Find me in app/views/orders/show.html.erb</p>
+<!--ユーザー側注文機能に先行してビューページの形だけ作成しているので、変数やパスの確認が必要です！！-->
+<h2>注文履歴詳細画面</h2>
+
+<tbody>
+  <tr>
+    <th>購入者</th>
+    <td><%= "#{@order.customer.last_name} #{@order.cunstomer.first_name}" %></td>
+  </tr>
+  <tr>
+    <th>配送先</th>
+    <td>
+      <%= "〒 #{@order.postcode} #{@order.address}" %><br>
+      <%= @order.address.name %>
+    </td>
+  </tr>
+  <tr>
+    <th>支払い方法</th>
+    <td><%= @oder.pay_way %></td>
+  </tr>
+  <tr>
+    <th>注文ステータス</th>
+    <td>
+      <%= form_with model: @order, url: admins_oders_path, local: true do |f| %>
+        <%= f.select :status, Oder.status.keys.to_a %>
+        <%= f.submit "更新", class:"btn btn-primary" %></td>
+      <% end %>
+  </tr>
+</tbody>
+
+<table class="table table-cndensed">
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価（税込）</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th>製作ステータス</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= @order_details.each do |o| %>
+    <tr>
+      <td><%= o.item.name %></td>
+      <td><%= (o.price.* 1.1).round.to_s(:delimited) %></td>
+      <td><%= o.amount %></td>
+      <td><%= ((o.price * 1.1) * o.amount).round.to_s(:delimited) %></td>
+      <td>
+        <%= form_with model: order_detai ls, url: admins_oder_details_path, local:treu do |f| %>
+          <%= f.select :making_status, OrderDetails.making_status.keys.to_a %>
+        <% end %>
+      </td>
+      <td><%= f.submit "更新", class:"btn btn-primary" %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<tbody>
+  <tr>
+    <th>商品合計</th>
+    <!--商品合計のやり方、要検討です-->
+    <td>
+      <%= @order_details.each do |o| %>
+        <% sub_total = (order_detai.praice * order_detail.amount) %>
+        <% @sum + = sub_total %>
+      <% end %>
+      <%= total_price(@sum).round.to_s(:delimited) %>円
+      <!--↑エラー出るかも-->
+    </td>
+  </tr>
+  <tr>
+    <th>送料</th>
+    <td><%= @order.shipping_cost %>円</td>
+  </tr>
+  <tr>
+    <th>請求金額合計</th>
+    <td><%= total_price(@sum + @order.shipping_cost).round.to_s(:delimited) %>円</td>
+  </tr>
+</tbody>

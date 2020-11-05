@@ -4,7 +4,7 @@
   <table class="table table-bordered">
     <tr>
       <th>注文日</th>
-      <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+      <td><%= @order.created_at.strftime('%Y/%m/%d %T') %></td>
     </tr>
     <tr>
       <th>配送先</th>
@@ -51,12 +51,12 @@
       </tr>
     </thead>
     <tbody>
-      <%= @order.order_ditails.each do |order_ditails| %>
+      <%= @order.order_details.each do |o| %>
         <tr>
-          <td><%= order_ditails.name %></td>
-          <td><%= order_ditails.(price.* 1.1).round.to_s(:delimited) %></td>
-          <td><%= order_ditails.amount %></td>
-          <td><%= oder_ditails.%></td><!-- ココ！！ -->
+          <td><%= o.item.name %></td>
+          <td><%= (o.price.* 1.1).round.to_s(:delimited) %></td>
+          <td><%= o.amount %></td>
+          <td><%= ((o.price * 1.1) * o.amount).round.to_s(:delimited) %></td><!-- ココ！！ -->
         </tr>
       <% end %>
     </tbody>
