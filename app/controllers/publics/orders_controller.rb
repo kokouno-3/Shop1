@@ -37,13 +37,15 @@ class Publics::OrdersController < ApplicationController
 
   def index
     @customer = current_customer
-    @orders = @customer.orders.all
+    @orders = @customer.orders.all.page(params[:page]).per(10)
+    @sum = 0
   end
 
   def show
-    @customer = current_customer
-    @orders = @customer.orders.all
+    # @customer = current_customer
+    # @order = @customer.order
     @order = Order.find(params[:id])
+    @sum = 0
   end
 
   private
