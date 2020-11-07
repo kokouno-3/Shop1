@@ -8,18 +8,15 @@
 
   <div class="field">
       <%= f.label :"お届け先" %>
-    <div><%= f.radio_button :order, 1 %>ご自身の住所
-         <%= f.hidden_field :order, value: 1 %>
+    <div><%= f.radio_button :order, 0  %>ご自身の住所
          <%= @customer.postcode %><%= @customer.address %>
          <%= @customer.last_name %><%= @customer.first_name %>
     </div>
 
-    <div><%= f.radio_button :order, 2 %>登録済住所から選択</div>
-         <%= f.hidden_field :order, value: 2 %>
-         <%= f.collection_select :order, @addresses, :id, :shipping_info %>
+    <div><%= f.radio_button :order, 1 %>登録済住所から選択</div>
+         <%= f.collection_select :id, @addresses, :id, :shipping_info %>
 
-    <div><%= f.radio_button :order, 3 %>新しいお届け先</div>
-         <%= f.hidden_field :order, value: 3 %>
+    <div><%= f.radio_button :order, 2 %>新しいお届け先</div>
 
   <div class="field">
          <%= f.label :"郵便番号(ハイフンなし)" %>
