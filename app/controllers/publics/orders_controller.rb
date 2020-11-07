@@ -33,10 +33,19 @@ class Publics::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.save
     redirect_to publics_orders_complete_path
+    @carts = @customer.carts.all
+    @carts.each do |cart|
+      @order_detail = OrderDetail.new
+      @order_detail.item_id = cart.item_id
+      @order_detail.price = cart.item.price
+      @order_detail.amount = cart.amount
+      @order_detail.order_id = @order.id
+      @order_detail.save
+    end 
   end
 
   def index
-    orders = current_customer.orders.all.reverse_order # reverse_orderで逆順で表示する。reverse_orderを使うためにあえてordersに代入している
+    orders = current_customer.orders.all.reverse_order # reverse_orderで逆順で表示する。reverse_orderを使うためにあえてordersに代入している。
     @orders = orders.page(params[:page]).per(10)
     @total = 0
   end
@@ -44,6 +53,7 @@ class Publics::OrdersController < ApplicationController
   def show
     # @customer = current_customer
     # @order = @customer.order
+    @customer = current_customer
     @order = Order.find(params[:id])
     @total = 0
   end
@@ -51,7 +61,7 @@ class Publics::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:postcode, :address, :name, :customer_id, :shipping_cost, :pay_money, :pay_way, :statu, :shipping_info)
+    params.require(:order).permit(:postcode, :address, :name, :customer_id, :shipping_cost, :pay_money, :pay_way, :status, :shipping_info)
   end
 
 end

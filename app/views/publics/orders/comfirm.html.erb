@@ -57,3 +57,13 @@
 <div class = "actions" >
     <%= link_to "購入を確定する", publics_orders_complete_path, class: "btn btn-success" %>
 </div>
+
+<%= form_with model: @order, url: publics_orders_path, local: true do |f| %>
+<%= f.hidden_field :postcode, value: @order.postcode %>
+<%= f.hidden_field :address, value: @order.address %>
+<%= f.hidden_field :name, value: @order.name %>
+<%= f.hidden_field :created_at, value: @order.created_at %>
+<%= f.hidden_field :status, value: @order.status %>
+<%= f.hidden_field :customer_id, value: current_customer.id %>
+<%= f.submit "購入を確定するテスト！" %>
+<% end %>
