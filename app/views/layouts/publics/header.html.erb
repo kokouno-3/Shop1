@@ -18,6 +18,11 @@
 
   <div class="header-nav-div">
     <% if customer_signed_in? %>
+
+      <li class="header-nav">
+        <!--ようこそ、<= @customer.last_name %><= @customer.first_name %> さん！-->
+      </li>
+
       <li class="header-nav">
         <%= link_to "マイページ", publics_customer_path(current_customer.id), class:"nav-list" %>
       </li>
