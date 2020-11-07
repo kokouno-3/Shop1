@@ -14,7 +14,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @orders.each do |cart| %>
+    <% @orders.each do |order| %>
     <tr>
       <td>
         <%= order.created_at %>
@@ -25,12 +25,16 @@
         <%= order.name %>
       </td>
       <td>
-        <%= order.items %>
+        <% order.order_details.each do |order_detail| %> <!--注文した注文商品をeachで出す-->
+        <%= order_detail.item.name %><br> <!--注文した注文商品のitemの名前-->
+        <% end %>
       </td>
       <td>
-        <% sub_total = (cart.item.price.* 1.1.* cart.amount) %>
+        <% order.order_details.each do |order_detail| %>
+        <% sub_total = (order_detail.item.price.* 1.1.* order_detail.amount) %>
         <% @total += sub_total %>
-        <%= (order.price.* 1.1).round.to_s(:delimited) %>
+        <% end %>
+        <%= (@total.+ 800).round.to_s(:delimited) %>
       </td>
         <%= order.status %>
       </td>
@@ -39,3 +43,4 @@
     <% end %>
   </tbody>
   </table>
+  <%= paginate @orders %>
