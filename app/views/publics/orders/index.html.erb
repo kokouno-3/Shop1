@@ -36,6 +36,7 @@
         <% end %>
         <%= (@total.+ 800).round.to_s(:delimited) %>
       </td>
+      <td>
         <%= order.status %>
       </td>
       <td><%= link_to "表示する", publics_order_path(order), class: "btn btn-primary" %></td>
