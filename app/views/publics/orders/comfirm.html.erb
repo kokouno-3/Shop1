@@ -10,6 +10,7 @@
     <th class="active"></th>
     </tr>
   </thead>
+
   <tbody>
     <% @carts.each do |cart| %>
     <tr>
@@ -57,6 +58,20 @@
 <div class = "actions" >
     <%= link_to "購入を確定する", publics_orders_complete_path, class: "btn btn-success" %>
 </div>
+
+<table class="table table-bordered">
+  <tbody>
+  <tr>
+    <td class="active">送料</th><td class="active">800</th>
+  </tr>
+  <tr>
+    <td class="active">商品合計</th><td class="active"></th>
+  </tr>
+  <tr>
+    <td class="active">請求額</th><td class="active"></th>
+  </tr>
+  </body>
+</table>
 
 <%= form_with model: @order, url: publics_orders_path, local: true do |f| %>
 <%= f.hidden_field :postcode, value: @order.postcode %>

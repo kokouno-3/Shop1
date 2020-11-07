@@ -4,7 +4,7 @@
     <title>Shop1</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-        
+
     <script src="https://kit.fontawesome.com/fc6aa7a24c.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -20,7 +20,7 @@
     <% if customer_signed_in? %>
 
       <li class="header-nav">
-        <!--ようこそ、<= @customer.last_name %><= @customer.first_name %> さん！-->
+        ようこそ、<%= @customer.last_name %><%= @customer.first_name %> さん！
       </li>
 
       <li class="header-nav">

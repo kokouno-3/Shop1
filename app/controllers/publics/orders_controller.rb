@@ -14,11 +14,11 @@ class Publics::OrdersController < ApplicationController
     @cart = current_customer.carts.find_by(item_id: params[:item_id])
     @total = 0
 
-      if params[:order][:order] == 0
+      if params[:order][:order] == "0"
         @order.postcode = @customer.postcode
         @order.address = @customer.address
-        @order.name = @customer.last_name
-      else params[:order][:order] == 1
+        @order.name = @customer.last_name + @customer.first_name
+      elsif params[:order][:order] == "1"
         @address = Address.find(params[:order][:id])
         @order.postcode = @address.postcode
         @order.address = @address.address
@@ -27,6 +27,7 @@ class Publics::OrdersController < ApplicationController
   end
 
   def complete
+    @customer = current_customer
   end
 
   def create
