@@ -30,9 +30,11 @@
         <% end %>
       </td>
       <td>
-        <% sub_total = (cart.item.price.* 1.1.* cart.amount) %>
+        <% order.order_details.each do |order_detail| %>
+        <% sub_total = (order_detail.item.price.* 1.1.* order_detail.amount) %>
         <% @total += sub_total %>
-        <%= (order.price.* 1.1).round.to_s(:delimited) %>
+        <% end %>
+        <%= (@total.+ 800).round.to_s(:delimited) %>
       </td>
         <%= order.status %>
       </td>
@@ -40,5 +42,5 @@
     </tr>
     <% end %>
   </tbody>
-  </table
+  </table>
   <%= paginate @orders %>

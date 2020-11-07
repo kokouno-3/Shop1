@@ -36,16 +36,16 @@ class Publics::OrdersController < ApplicationController
   end
 
   def index
-    @customer = current_customer
-    @orders = @customer.orders.all.page(params[:page]).per(10)
-    @sum = 0
+    orders = current_customer.orders.all.reverse_order # reverse_orderで逆順で表示する。reverse_orderを使うためにあえてordersに代入している
+    @orders = orders.page(params[:page]).per(10)
+    @total = 0
   end
 
   def show
     # @customer = current_customer
     # @order = @customer.order
     @order = Order.find(params[:id])
-    @sum = 0
+    @total = 0
   end
 
   private
