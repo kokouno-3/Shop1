@@ -4,8 +4,6 @@ class Admins::OrdersController < ApplicationController
   def index
     @orders = Order.all.page(params[:page]).per(10)
     @customer = current_customer
-    #@carts = @customer.carts.all
-    #@order = Order.find(params[:id])
   end
 
   def show
