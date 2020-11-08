@@ -33,7 +33,8 @@ class Publics::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.save
-    redirect_to publics_orders_complete_path
+    redirect_to orders_complete_path
+    @customer = current_customer
     @carts = @customer.carts.all
     @carts.each do |cart|
       @order_detail = OrderDetail.new
@@ -42,12 +43,14 @@ class Publics::OrdersController < ApplicationController
       @order_detail.amount = cart.amount
       @order_detail.order_id = @order.id
       @order_detail.save
-    end 
+    end
+    current_customer.carts.destroy_all
   end
 
   def index
+    @customer = current_customer
     orders = current_customer.orders.all.reverse_order # reverse_orderで逆順で表示する。reverse_orderを使うためにあえてordersに代入している。
-    @orders = orders.page(params[:page]).per(10)
+    @orders = orders.page(params[:page]).per(6)
     @total = 0
   end
 

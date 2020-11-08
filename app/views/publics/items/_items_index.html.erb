@@ -1,6 +1,6 @@
 <div class="item-container">
   <% @items.each do |item| %>
-    <%= link_to publics_item_path(item.id) do %>
+    <%= link_to item_path(item.id) do %>
       <div class="img_field" style="display:inline-block;">
         <div class="col-xs-6">
           <%= attachment_image_tag item, :image, size: "250x250", format: 'jpeg', fallback: "no-image.png" %>

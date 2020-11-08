@@ -17,7 +17,7 @@
     <% @orders.each do |order| %>
     <tr>
       <td>
-        <%= order.created_at %>
+        <%= order.created_at.strftime('%Y/%m/%d') %>
       </td>
       <td>
         <%= order.postcode %><br>
@@ -39,9 +39,11 @@
       <td>
         <%= order.status %>
       </td>
-      <td><%= link_to "表示する", publics_order_path(order), class: "btn btn-primary" %></td>
+      <td><%= link_to "表示する", order_path(order), class: "btn btn-primary" %></td>
     </tr>
     <% end %>
   </tbody>
   </table>
-  <%= paginate @orders %>
+  <div class="paginate1">
+  <%= paginate @orders, class: "paginate" %>
+  </div>
