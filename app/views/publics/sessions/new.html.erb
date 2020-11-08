@@ -10,8 +10,11 @@
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
 
-  パスワードを忘れた人はこちら
-  <= render "publics/shared/links" %>
+  <!--パスワードを忘れた人はこちら-->
+  <!--<= render "publics/shared/links" %>-->
+  <% if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+  　<%= link_to "=> パスワードを忘れた方はこちら", new_password_path(resource_name) %><br />
+　<% end %>
 
   <div class="actions">
     <%= f.submit "ログイン" %>

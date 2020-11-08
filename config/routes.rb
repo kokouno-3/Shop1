@@ -19,6 +19,12 @@ Rails.application.routes.draw do
   get 'customers/password/edit', to: 'devise/passwords#edit'
   patch '/customers/password', to: 'devise/passwords#update'
   put '/customers/password', to: 'devise/passwords#update'
+  get 'login' => 'devise/sessions#new', as: :new_customer_session
+  post 'login' => 'devise/sessions#create', as: :customer_session
+  get 'signup' => 'devise/registrations#new', as: :new_customer_registration
+  post 'signup' => 'devise/registrations#create', as: :customer_registration
+  get 'password' => 'devise/passwords#new', as: :new_customer_password
+  post 'password' => 'devise/passwords#create', as: :customer_password
   end
 
   root "publics/homes#top"
@@ -32,7 +38,7 @@ Rails.application.routes.draw do
   resources :orders, only:[:new, :create, :index, :show]
   delete "/carts/destroy_all" => "carts#destroy_all"
   resources :carts, only:[:index, :update, :destroy, :create]
-  resources :customers, only:[:edit, :show, :update] 
+  resources :customers, only:[:edit, :show, :update]
   resources :addresses, only:[:index, :create, :edit, :destroy, :update]
 
   end

@@ -17,11 +17,10 @@
         <% end %>
         </td>
       <td>
-        <%= "#{order.customer.last_name} #{order.customer.first_name}" %>
+        <%= order.customer.last_name%><%= order.customer.first_name %>
       </td>
-      <td><% order.order_details.each do |order_detail| %>
-          <%= order_detail.amount %>
-          <% end %>
+      <td>
+        <%= order.order_details.sum(:amount) %>
       </td>
       <td><%= order.status %></td>
     </tr>
