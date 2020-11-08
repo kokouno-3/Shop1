@@ -8,13 +8,24 @@
     <script src="https://kit.fontawesome.com/fc6aa7a24c.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <title>ながのCAKE</title>
   </head>
   <body>
 <header>
 
-  <div class="header-title">
-    <strong>LOGO</strong>
-  </div>
+<!--<div class="header-image"></div>-->
+  <!--<div class="header-title">ながのCAKE</div>-->
+  <nav class="navbar navbar-default" style="height:60px;">
+      <div class="container-fluid" style="height:60px;">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+             <h6><a href="/">ながのCAKE</a></h6>
+             <%= link_to "ながのCAKE", class: "header-logo" %>
+          </div>
 
   <div class="header-nav-div">
     <% if customer_signed_in? %>
@@ -57,9 +68,13 @@
        </li>
      <% end %>
   </div>
+   </div>
+    </nav>
   </header>
+  <div class="background-image">
     <div class="container">
     <%= yield %>
+    </div>
     </div>
     <%= render "layouts/footer" %>
   </body>
