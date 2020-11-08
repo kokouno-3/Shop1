@@ -1,5 +1,10 @@
 <h2>注文情報確認</h2>
 
+<div class="container">
+  <div class="row">
+
+ <div class="col-lg-9">
+
 <table class="table table-bordered">
   <thead class="thead-light">
   <tr>
@@ -33,19 +38,9 @@
     </tr>
     <% end %>
   </tbody>
+
   <table class="table table-bordered" style="width:350px;">
-  <tbody>
-    <tr>
-    <td class="active", style="width: 150px;">
-      合計金額
-    </td>
-    <td>
-      <%= @total.round.to_s(:delimited) %>
-    </td>
-    </tr>
-  </tbody>
   </table>
-</table>
 
 
 <p>支払方法</p>
@@ -55,21 +50,25 @@
     <%= @order.postcode %><%= @order.address %>
     <%= @order.name %>
 
+</div>
 
-<table class="table table-bordered">
+<div class="col-lg-3">
+<table class="table">
   <tbody>
   <tr>
     <td class="active">送料</th><td class="active">800</th>
   </tr>
   <tr>
-    <td class="active">商品合計</th><td class="active"></th>
+    <td class="active">商品合計</th><td class="active"><%= @total.round.to_s(:delimited) %></th>
   </tr>
   <tr>
-    <td class="active">請求額</th><td class="active"></th>
+    <td class="active">請求額</th><td class="active"><%= (@total.round + 800).to_s(:delimited) %></th>
   </tr>
   </body>
 </table>
 
+</div>
+</div>
 <%= form_with model: @order, url: orders_path, local: true do |f| %>
 <%= f.hidden_field :postcode, value: @order.postcode %>
 <%= f.hidden_field :address, value: @order.address %>

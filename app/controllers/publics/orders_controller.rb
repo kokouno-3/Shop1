@@ -52,6 +52,7 @@ class Publics::OrdersController < ApplicationController
     orders = current_customer.orders.all.reverse_order # reverse_orderで逆順で表示する。reverse_orderを使うためにあえてordersに代入している。
     @orders = orders.page(params[:page]).per(6)
     @total = 0
+    @customer = current_customer
   end
 
   def show

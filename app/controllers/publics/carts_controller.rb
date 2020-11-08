@@ -13,7 +13,7 @@ class Publics::CartsController < ApplicationController
   def create
     @customer = current_customer
     @item = Item.find(params[:cart][:item_id]) # findでparamsの、cartモデルのitem_idを探す
-    if Cart.exists?(item_id: @item, customer_id: @customer) # exists?でitem_idとcustomer_idが存在するか確認する
+    if Cart.exists?(item_id: @item, customer_id: @customer) # exists?でitem_idとcustomer_idが存在するかを確認する
       @cart = Cart.find_by(item_id: @item.id, customer_id: @customer) # find_byでカートに存在するitem_idとcustomer_idを探す
       @cart.amount += params[:cart][:amount].to_i # カートに存在する商品の数量@cart.amountにparamsでcartモデルのamountを足し、代入する。
       @cart.update(amount: @cart.amount) # 上の行で定義した@cart.amountをupdateする
