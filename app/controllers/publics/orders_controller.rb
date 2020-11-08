@@ -42,13 +42,14 @@ class Publics::OrdersController < ApplicationController
       @order_detail.amount = cart.amount
       @order_detail.order_id = @order.id
       @order_detail.save
-    end 
+    end
   end
 
   def index
     orders = current_customer.orders.all.reverse_order # reverse_orderで逆順で表示する。reverse_orderを使うためにあえてordersに代入している。
     @orders = orders.page(params[:page]).per(10)
     @total = 0
+    @customer = current_customer
   end
 
   def show
