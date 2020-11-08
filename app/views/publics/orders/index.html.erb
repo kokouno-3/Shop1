@@ -5,19 +5,19 @@
 <table class="table table-bordered">
   <thead class="thead-light">
   <tr>
-    <th class="active">注文日</th>
-    <th class="active">配送先</th>
-    <th class="active">注文商品</th>
-    <th class="active">支払金額</th>
-    <th class="active">ステータス</th>
-    <th class="active">注文詳細</th>
+    <th>注文日</th>
+    <th>配送先</th>
+    <th>注文商品</th>
+    <th>支払金額</th>
+    <th>ステータス</th>
+    <th>注文詳細</th>
     </tr>
   </thead>
   <tbody>
     <% @orders.each do |order| %>
     <tr>
       <td>
-        <%= order.created_at %>
+        <%= order.created_at.strftime('%Y/%m/%d') %>
       </td>
       <td>
         <%= order.postcode %><br>
@@ -36,11 +36,14 @@
         <% end %>
         <%= (@total.+ 800).round.to_s(:delimited) %>
       </td>
+      <td>
         <%= order.status %>
       </td>
-      <td><%= link_to "表示する", publics_order_path(order), class: "btn btn-primary" %></td>
+      <td><%= link_to "表示する", order_path(order), class: "btn btn-primary" %></td>
     </tr>
     <% end %>
   </tbody>
   </table>
-  <%= paginate @orders %>
+  <div class="paginate1">
+  <%= paginate @orders, class: "paginate" %>
+  </div>

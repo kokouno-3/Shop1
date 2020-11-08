@@ -4,62 +4,77 @@
     <title>Shop1</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-        
+
     <script src="https://kit.fontawesome.com/fc6aa7a24c.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <title>ながのCAKE</title>
   </head>
   <body>
 <header>
 
-  <div class="header-title">
-    <strong>LOGO</strong>
-  </div>
+<!--<div class="header-image"></div>-->
+  <!--<div class="header-title">ながのCAKE</div>-->
+  <nav class="navbar navbar-default" style="height:60px;">
+      <div class="container-fluid" style="height:60px;">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+             <h6><a href="/">ながのCAKE</a></h6>
+             <%= link_to "ながのCAKE", class: "header-logo" %>
+          </div>
 
   <div class="header-nav-div">
     <% if customer_signed_in? %>
 
       <li class="header-nav">
-        <!--ようこそ、<= @customer.last_name %><= @customer.first_name %> さん！-->
+        ようこそ、<%= @customer.last_name %><%= @customer.first_name %> さん！
       </li>
 
       <li class="header-nav">
-        <%= link_to "マイページ", publics_customer_path(current_customer.id), class:"nav-list" %>
+        <%= link_to "マイページ", customer_path(current_customer.id), class: "nav-list" %>
       </li>
 
        <li class="header-nav">
-         <%= link_to "商品一覧", publics_items_path(current_customer), class:"nav-list" %>
+         <%= link_to "商品一覧", items_path(current_customer), class: "nav-list" %>
        </li>
 
        <li class="header-nav">
-         <%= link_to "カート", publics_carts_path, class:"nav-list" %>
+         <%= link_to "カート", carts_path, class: "nav-list" %>
        </li>
 
        <li class="header-nav">
-         <%= link_to "ログアウト", customers_sign_out_path, method: :delete, class:"nav-list" %>
+         <%= link_to "ログアウト", customers_sign_out_path, method: :delete, class: "nav-list" %>
        </li>
 
     <% else %>
        <li class="header-nav">
-         <%= link_to "About", about_path, class:"nav-list" %>
+         <%= link_to "About", about_path, class: "nav-list" %>
        </li>
 
        <li class="header-nav">
-         <%= link_to "商品一覧", root_path, class:"nav-list" %>
+         <%= link_to "商品一覧", root_path, class: "nav-list" %>
        </li>
 
        <li class="header-nav">
-         <%= link_to "新規登録", customers_sign_up_path, class:"nav-list" %>
+         <%= link_to "新規登録", customers_sign_up_path, class: "nav-list" %>
        </li>
 
         <li class="header-nav">
-         <%= link_to "ログイン", customers_sign_in_path, class:"nav-list" %>
+         <%= link_to "ログイン", customers_sign_in_path, class: "nav-list" %>
        </li>
      <% end %>
   </div>
+   </div>
+    </nav>
   </header>
+  <div class="background-image">
     <div class="container">
     <%= yield %>
+    </div>
     </div>
     <%= render "layouts/footer" %>
   </body>

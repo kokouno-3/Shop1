@@ -1,5 +1,10 @@
 <h2>注文情報確認</h2>
 
+<div class="container">
+  <div class="row">
+
+ <div class="col-lg-9">
+
 <table class="table table-bordered">
   <thead class="thead-light">
   <tr>
@@ -10,6 +15,7 @@
     <th class="active"></th>
     </tr>
   </thead>
+
   <tbody>
     <% @carts.each do |cart| %>
     <tr>
@@ -20,31 +26,21 @@
         <%= (cart.item.price.* 1.1).round.to_s(:delimited) %>
       </td>
       <td>
-        <%= form_with model: cart, url: publics_cart_path(cart), method: :patch, local: true do |f| %>
+        <%= form_with model: cart, url: cart_path(cart), method: :patch, local: true do |f| %>
         <%= f.text_field :amount, auto_focus: true, size:"3" %>
         <%= f.submit "変更", class: "btn btn-primary" %>
         <% end %>
         </td>
       <td><%= (cart.item.price.* 1.1.* cart.amount).round.to_s(:delimited) %></td>
-      <td><%= link_to "削除する", publics_cart_path(cart), method: :delete, class: "btn btn-danger" %></td>
+      <td><%= link_to "削除する", cart_path(cart), method: :delete, class: "btn btn-danger" %></td>
       <% sub_total = (cart.item.price.* 1.1.* cart.amount) %>
       <% @total += sub_total %>
     </tr>
     <% end %>
   </tbody>
+
   <table class="table table-bordered" style="width:350px;">
-  <tbody>
-    <tr>
-    <td class="active", style="width: 150px;">
-      合計金額
-    </td>
-    <td>
-      <%= @total.round.to_s(:delimited) %>
-    </td>
-    </tr>
-  </tbody>
   </table>
-</table>
 
 
 <p>支払方法</p>
@@ -54,6 +50,31 @@
     <%= @order.postcode %><%= @order.address %>
     <%= @order.name %>
 
-<div class = "actions" >
-    <%= link_to "購入を確定する", publics_orders_complete_path, class: "btn btn-success" %>
 </div>
+
+<div class="col-lg-3">
+<table class="table">
+  <tbody>
+  <tr>
+    <td class="active">送料</th><td class="active">800</th>
+  </tr>
+  <tr>
+    <td class="active">商品合計</th><td class="active"><%= @total.round.to_s(:delimited) %></th>
+  </tr>
+  <tr>
+    <td class="active">請求額</th><td class="active"><%= (@total.round + 800).to_s(:delimited) %></th>
+  </tr>
+  </body>
+</table>
+
+</div>
+</div>
+<%= form_with model: @order, url: orders_path, local: true do |f| %>
+<%= f.hidden_field :postcode, value: @order.postcode %>
+<%= f.hidden_field :address, value: @order.address %>
+<%= f.hidden_field :name, value: @order.name %>
+<%= f.hidden_field :created_at, value: @order.created_at %>
+<%= f.hidden_field :status, value: @order.status %>
+<%= f.hidden_field :customer_id, value: current_customer.id %>
+<%= f.submit "購入を確定する", class: "btn btn-success" %>
+<% end %>

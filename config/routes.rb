@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   root "publics/homes#top"
   get "/about" => "publics/homes#about"
 
-  namespace :publics do
+  scope module: :publics do
   resources :items, only:[:index, :show]
   get 'genre_items/:id' => "items#genre_items", as: "genre_items"
   get "/orders/complete" => "orders#complete"

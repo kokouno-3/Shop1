@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
        when Admin
          admins_path # ログイン後に遷移するpathを設定(admin側)
        when Customer
-         publics_items_path  # ログイン後に遷移するpathを設定(customer側)
+         items_path  # ログイン後に遷移するpathを設定(customer側)
      end
    end
 
