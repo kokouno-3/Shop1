@@ -3,6 +3,7 @@ class Admins::OrdersController < ApplicationController
    layout 'admins/header'
   def index
     @orders = Order.all.page(params[:page]).per(10)
+    @customer = current_customer
   end
 
   def show

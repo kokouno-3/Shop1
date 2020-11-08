@@ -1,3 +1,17 @@
 // Place all the styles related to the genres controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+input[class="form-control"] {
+        width: 140px;
+        height: 30px;
+        margin-left: 40px;
+    }
+
+.genre-container {
+   display: flex;
+}
+
+.status-btn {
+  margin: 0 20px;
+}

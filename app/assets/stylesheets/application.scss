@@ -60,7 +60,6 @@ h2 {
 
 .destroy_all {
   float: right;
-  
 }
 
 .send-btn{
@@ -82,3 +81,29 @@ footer {
   border-top: 1px solid ;
   border-bottom: 1px solid ;
 }
+
+//Admin/session のレイアウト
+.session-main {
+  text-align: center;
+}
+
+.session-field {
+  margin-top: 20px;
+}
+
+input[type="email"] {
+        width: 300px;
+        height: 40px;
+        margin-left: 17px;
+    }
+
+input[type="password"] {
+        width: 300px;
+        height: 40px;
+        margin-left: 40px;
+    }
+
+.resister-btn {
+  float: righ;
+}
+
