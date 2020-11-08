@@ -1,5 +1,5 @@
 <h2>登録情報編集</h2>
-<%= form_with model: @customer, url: publics_customer_path(@customer) ,method: :patch , local: true do |f| %>
+<%= form_with model: @customer, url: customer_path(@customer) ,method: :patch , local: true do |f| %>
 
   <div class="field">
     <%= f.label :"（姓)" %><br />

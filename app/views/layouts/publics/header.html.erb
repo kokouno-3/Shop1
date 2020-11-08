@@ -24,36 +24,36 @@
       </li>
 
       <li class="header-nav">
-        <%= link_to "マイページ", publics_customer_path(current_customer.id), class:"nav-list" %>
+        <%= link_to "マイページ", customer_path(current_customer.id), class: "nav-list" %>
       </li>
 
        <li class="header-nav">
-         <%= link_to "商品一覧", publics_items_path(current_customer), class:"nav-list" %>
+         <%= link_to "商品一覧", items_path(current_customer), class: "nav-list" %>
        </li>
 
        <li class="header-nav">
-         <%= link_to "カート", publics_carts_path, class:"nav-list" %>
+         <%= link_to "カート", carts_path, class: "nav-list" %>
        </li>
 
        <li class="header-nav">
-         <%= link_to "ログアウト", customers_sign_out_path, method: :delete, class:"nav-list" %>
+         <%= link_to "ログアウト", customers_sign_out_path, method: :delete, class: "nav-list" %>
        </li>
 
     <% else %>
        <li class="header-nav">
-         <%= link_to "About", about_path, class:"nav-list" %>
+         <%= link_to "About", about_path, class: "nav-list" %>
        </li>
 
        <li class="header-nav">
-         <%= link_to "商品一覧", root_path, class:"nav-list" %>
+         <%= link_to "商品一覧", root_path, class: "nav-list" %>
        </li>
 
        <li class="header-nav">
-         <%= link_to "新規登録", customers_sign_up_path, class:"nav-list" %>
+         <%= link_to "新規登録", customers_sign_up_path, class: "nav-list" %>
        </li>
 
         <li class="header-nav">
-         <%= link_to "ログイン", customers_sign_in_path, class:"nav-list" %>
+         <%= link_to "ログイン", customers_sign_in_path, class: "nav-list" %>
        </li>
      <% end %>
   </div>
