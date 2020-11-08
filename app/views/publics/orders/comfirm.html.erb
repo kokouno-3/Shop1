@@ -32,7 +32,7 @@
         <% end %>
         </td>
       <td><%= (cart.item.price.* 1.1.* cart.amount).round.to_s(:delimited) %></td>
-      <td><%= link_to "削除する", publics_cart_path(cart), method: :delete, class: "btn btn-danger" %></td>
+      <td><%= link_to "削除する", cart_path(cart), method: :delete, class: "btn btn-danger" %></td>
       <% sub_total = (cart.item.price.* 1.1.* cart.amount) %>
       <% @total += sub_total %>
     </tr>
