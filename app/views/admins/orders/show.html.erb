@@ -1,27 +1,26 @@
-<!--ユーザー側注文機能に先行してビューページの形だけ作成しているので、変数やパスの確認が必要です！！-->
 <h2>注文履歴詳細画面</h2>
 
 <tbody>
   <tr>
     <th>購入者</th>
-    <td><%= "#{@order.customer.last_name} #{@order.cunstomer.first_name}" %></td>
+    <td><%= "#{@order.customer.last_name} #{@order.customer.first_name}" %></td>
   </tr>
   <tr>
     <th>配送先</th>
     <td>
       <%= "〒 #{@order.postcode} #{@order.address}" %><br>
-      <%= @order.address.name %>
+      <%= @order.name %>
     </td>
   </tr>
   <tr>
     <th>支払い方法</th>
-    <td><%= @oder.pay_way %></td>
+    <td><%= @order.pay_way %></td>
   </tr>
   <tr>
     <th>注文ステータス</th>
     <td>
-      <%= form_with model: @order, url: admins_oders_path, local: true do |f| %>
-        <%= f.select :status, Oder.status.keys.to_a %>
+      <%= form_with model: @order, url: admins_order_path(@order), method: :patch, local: true do |f| %>
+        <%= f.select :status, Order.statuses.keys %>
         <%= f.submit "更新", class:"btn btn-primary" %></td>
       <% end %>
   </tr>
@@ -39,18 +38,18 @@
     </tr>
   </thead>
   <tbody>
-    <%= @order_details.each do |o| %>
+    <% @order.order_details.each do |o| %>
     <tr>
       <td><%= o.item.name %></td>
       <td><%= (o.price.* 1.1).round.to_s(:delimited) %></td>
       <td><%= o.amount %></td>
       <td><%= ((o.price * 1.1) * o.amount).round.to_s(:delimited) %></td>
       <td>
-        <%= form_with model: order_detai ls, url: admins_oder_details_path, local:treu do |f| %>
-          <%= f.select :making_status, OrderDetails.making_status.keys.to_a %>
-        <% end %>
+        <%= form_with model: @order_detail, url: admins_order_path(o), method: :patch, local: true do |f| %>
+          <%= f.select :making_status, OrderDetail.making_statuses.keys %>
       </td>
       <td><%= f.submit "更新", class:"btn btn-primary" %></td>
+      <% end %>
     </tr>
     <% end %>
   </tbody>
@@ -59,14 +58,12 @@
 <tbody>
   <tr>
     <th>商品合計</th>
-    <!--商品合計のやり方、要検討です。mergeした後に動作確認＆修正予定です。（2020/11/5）-->
     <td>
-      <%= @order_details.each do |o| %>
-        <% sub_total = (order_detai.praice * order_detail.amount) %>
-        <% @sum + = sub_total %>
+      <% @order.order_details.each do |order_detail| %>
+        <% sub_total = (order_detail.item.price.*1.1.* order_detail.amount) %>
+        <% @total += sub_total %>
       <% end %>
-      <%= total_price(@sum).round.to_s(:delimited) %>円
-      <!--↑エラー出るかも-->
+      <%= (@total).round.to_s(:delimited) %>円
     </td>
   </tr>
   <tr>
@@ -75,6 +72,6 @@
   </tr>
   <tr>
     <th>請求金額合計</th>
-    <td><%= total_price(@sum + @order.shipping_cost).round.to_s(:delimited) %>円</td>
+    <td><%= (@total + 800).round.to_s(:delimited) %>円</td>
   </tr>
 </tbody>
