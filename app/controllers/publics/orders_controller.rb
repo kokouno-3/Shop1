@@ -7,7 +7,7 @@ class Publics::OrdersController < ApplicationController
     @customer = current_customer
   end
 
-  def comfirm
+  def confirm
     @order = Order.new(order_params)
     @customer = current_customer
     @carts = @customer.carts.all

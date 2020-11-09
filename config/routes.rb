@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   resources :items, only:[:index, :show]
   get 'genre_items/:id' => "items#genre_items", as: "genre_items"
   get "/orders/complete" => "orders#complete"
-  post "/orders/comfirm" => "orders#comfirm"
+  post "/orders/confirm" => "orders#confirm"
   resources :orders, only:[:new, :create, :index, :show]
   delete "/carts/destroy_all" => "carts#destroy_all"
   resources :carts, only:[:index, :update, :destroy, :create]
