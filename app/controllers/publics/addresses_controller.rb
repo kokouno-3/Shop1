@@ -5,7 +5,7 @@ class Publics::AddressesController < ApplicationController
   def index
     @addresses = Address.all
     @address = Address.new
-    @customer = Customer.find_by(params[:customer_id])
+    @customer = current_customer
   end
 
   def create
