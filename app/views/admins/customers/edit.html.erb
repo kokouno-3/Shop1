@@ -1,4 +1,4 @@
-<h2><%= @customer.last_name %><%= @customer.first_name%>さんの会員情報編集</h2>
+<h2 style="margin: 30px 0 50px 100px ;"><%= @customer.last_name %><%= @customer.first_name%>さんの会員情報編集</h2>
 
 
 <%= form_with model: @customer, url: admins_customer_path(@customer), class: 'edit_admins_customer', local: true do |f| %>

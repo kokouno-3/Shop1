@@ -7,7 +7,7 @@ class Publics::OrdersController < ApplicationController
     @customer = current_customer
   end
 
-  def comfirm
+  def confirm
     @order = Order.new(order_params)
     @customer = current_customer
     @carts = @customer.carts.all
@@ -56,8 +56,6 @@ class Publics::OrdersController < ApplicationController
   end
 
   def show
-    # @customer = current_customer
-    # @order = @customer.order
     @customer = current_customer
     @order = Order.find(params[:id])
     @total = 0
