@@ -1,14 +1,18 @@
+<br>
+<br>
+<br>
 <h2>注文情報入力</h2>
   <%= form_with model: @order, url: orders_comfirm_path, class: 'edit_admins_customer', local: true do |f| %>
     <div class="field">
-      <%= f.label :"支払方法" %>
+      <h4 style="fon">支払方法</h4>
     </div>
-    <div><%= f.radio_button :pay_way, "クレジット" %>クレジット</div>
-    <div><%= f.radio_button :pay_way, "銀行振込" %> 銀行振込</div>
+    <div><%= f.radio_button :pay_way, "クレジット" %>　クレジット</div>
+    <div><%= f.radio_button :pay_way, "銀行振込" %>　銀行振込</div>
 
   <div class="field">
-      <%= f.label :"お届け先" %>
-    <div><%= f.radio_button :order, 0  %>ご自身の住所
+    <h4>お届け先</h4>
+  </div>
+    <div><%= f.radio_button :order, 0  %>ご自身の住所<br>
          <%= @customer.postcode %><%= @customer.address %>
          <%= @customer.last_name %><%= @customer.first_name %>
     </div>
