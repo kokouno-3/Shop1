@@ -56,8 +56,6 @@ class Publics::OrdersController < ApplicationController
   end
 
   def show
-    # @customer = current_customer
-    # @order = @customer.order
     @customer = current_customer
     @order = Order.find(params[:id])
     @total = 0

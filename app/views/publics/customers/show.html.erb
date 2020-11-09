@@ -1,14 +1,17 @@
+<br>
+<br>
+<br>
 <h2>マイページ</h2>
-
-<h3>登録情報</h3>
+<br>
+<h3 style="display:inline-block;">登録情報　</h3>
 <%= link_to "編集する", edit_customer_path, class: "btn btn-primary" %>
 <%= link_to "パスワードを変更する", "#", class: "btn btn-primary" %>
 
-<table class="table table-bordered">
+<table class="table table-bordered" style="width:60%;">
   <tbody>
     <tr>
       <th style="width: 20%;"><h4>氏名</h4></th>
-      <td><p><%= @customer.last_name %><%= @customer.first_name %></p></td>
+      <td style="width: 30%;"><p><%= @customer.last_name %><%= @customer.first_name %></p></td>
     </tr>
 
     <tr>
@@ -39,7 +42,8 @@
   </tbody>
 </table>
 
-<h4>配送先</h4>
-<%= link_to "一覧を見る", addresses_path, class: "btn btn-primary"%>
-<h4>注文履歴</h4>
+<h4 style="display:inline-block;">配送先　　</h4>
+<%= link_to "一覧を見る", addresses_path, class: "btn btn-primary" %>
+<br>
+<h4 style="display:inline-block;">注文履歴　</h4>
 <%= link_to "一覧を見る", orders_path, class: "btn btn-primary" %>
