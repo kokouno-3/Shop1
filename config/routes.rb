@@ -16,14 +16,14 @@ Rails.application.routes.draw do
   get 'customers/sign_in',to: 'publics/sessions#new'
   post 'customers/sign_in',to: 'publics/sessions#create'
   delete 'customers/sign_out',to: 'publics/sessions#destroy'
-  get 'customers/password/edit', to: 'devise/passwords#edit'
-  patch '/customers/password', to: 'devise/passwords#update'
-  put '/customers/password', to: 'devise/passwords#update'
-  get 'login' => 'devise/sessions#new', as: :new_customer_session
+  get 'customers/password/new', to: 'publics/passwords#new'
+  patch 'customers/password', to: 'publics/passwords#update'
+  put 'customers/password', to: 'publics/passwords#update'
+  get 'login' => 'publics/sessions#new', as: :new_customer_session
   post 'login' => 'devise/sessions#create', as: :customer_session
   get 'signup' => 'devise/registrations#new', as: :new_customer_registration
   post 'signup' => 'devise/registrations#create', as: :customer_registration
-  get 'password' => 'devise/passwords#new', as: :new_customer_password
+  get 'password' => 'publics/passwords#new', as: :new_customer_password
   post 'password' => 'devise/passwords#create', as: :customer_password
   end
 
@@ -38,13 +38,14 @@ Rails.application.routes.draw do
   resources :orders, only:[:new, :create, :index, :show]
   delete "/carts/destroy_all" => "carts#destroy_all"
   resources :carts, only:[:index, :update, :destroy, :create]
+  get "/customers/unsubscribe" => "customers#unsubscribe"
+  patch "/customers/withdraw" => "customers#withdraw"
   resources :customers, only:[:edit, :show, :update]
   resources :addresses, only:[:index, :create, :edit, :destroy, :update]
 
   end
 
-  get "/customers/unsubscribe" => "publics/customers#unsubscribe"
-  patch "/customers/withdraw" => "publics/customers#withdraw"
+  
 
   namespace :admins do
   get "/" => "homes#top"

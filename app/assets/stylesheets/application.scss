@@ -22,6 +22,7 @@
   margin: 0;
   box-sizing: border-box;
 }
+///////////////header////////////////
 
 header {
   width: 100%;
@@ -99,8 +100,9 @@ h6 a {
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
 }
 
-// body //
+////////////////// body ///////////////////////
 
+//全ページ共通
 .background-image {
   background-image: linear-gradient( 130deg, rgba(250, 112, 246, 0.4), rgba(254, 225, 64, 0.6)), url(suites-3781068_1920);
   background-size: cover;
@@ -126,13 +128,11 @@ h2 {
   border-radius: 10px;
 }
 
-.destroy_all {
-  float: right;
-}
-
-.send-btn{
-  display: flex;
-  justify-content: center;
+.pagination {
+  display: inline-block;
+  padding-left: 0;
+  margin: 0;
+  border-radius: 4px;
 }
 
 .paginate1 {
@@ -150,9 +150,22 @@ h2 {
   display: inline-block;
 }
 
+//cart
+
+.destroy_all {
+  float: right;
+}
+
+.send-btn{
+  display: flex;
+  justify-content: center;
+}
+
 .field-under{
   margin-bottom: 4px;
 }
+
+//customer
 
 .customer-profile {
   display: inline-block;
@@ -164,13 +177,19 @@ h2 {
   float: right;
 }
 
+//customer-registations
+
 .actions-new {
   text-align: center;
 }
 
+//customer-sessions
+
 .customer-session-new {
   text-align : center;
 }
+
+//about
 
 .about {
   text-align: center;
@@ -191,14 +210,85 @@ h2 {
   font-weight: 600;
 }
 
-.pagination {
-    display: inline-block;
-    padding-left: 0;
-    margin: 0;
-    border-radius: 4px;
+//orders-new
+
+.field-tag {
+  margin: 0 0 5px 20px;
+  width: 60%;
 }
 
-// footer //
+.field-tag > div {
+  margin-top : 10px;
+}
+
+//orders-confirm
+
+.order-success {
+  text-align: center;
+}
+
+//orders-complete
+.complete-message {
+  text-align: center;
+  font-size: 50px;
+  margin-top: 200px;
+}
+
+//address
+form > .address-field > div {
+  display: inline-block;
+  margin: 5px 0 10px 20px;
+  font-size: 15px;
+  width: 170px;
+  float: left;
+  clear: both;
+}
+
+.address-field {
+  margin-bottom: 20px;
+}
+
+.address-field > div > dd {
+  padding: 10px 0;
+}
+
+//address-edit
+form > .edit-address > dt {
+  display: inline-block;
+  margin: 5px 0 10px 20px;
+  font-size: 15px;
+  width: 200px;
+  float: left;
+  clear: both;
+}
+
+.edit-address > dt > dd {
+  padding: 10px 0;
+} 
+
+.edit-address {
+  margin-bottom: 20px;
+}
+
+//unsubscribe
+
+.unsubscribe-main{
+  text-align: center;
+  margin-top: 100px;
+}
+
+.unsubscribe {
+  font-size: 25px;
+  font-weight: 800;
+  margin: 20px;
+}
+
+.unsubscribe-main > p {
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+//////////////////////// footer ///////////////////////////
 footer {
   width: 100%;
   height: 150px;
