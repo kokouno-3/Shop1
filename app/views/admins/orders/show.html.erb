@@ -1,0 +1,78 @@
+
+<h2 style="margin: 30px 0 50px 100px;">注文履歴詳細画面</h2>
+
+<tbody>
+  <tr>
+    <th>購入者</th>
+    <td><%= "#{@order.customer.last_name} #{@order.customer.first_name}" %></td>
+  </tr>
+  <tr>
+    <th>配送先</th>
+    <td>
+      <%= "〒 #{@order.postcode} #{@order.address}" %><br>
+      <%= @order.name %>
+    </td>
+  </tr>
+  <tr>
+    <th>支払い方法</th>
+    <td><%= @order.pay_way %></td>
+  </tr>
+  <tr>
+    <th>注文ステータス</th>
+    <td>
+      <%= form_with model: @order, url: admins_order_path(@order), method: :patch, local: true do |f| %>
+        <%= f.select :status, Order.statuses.keys %>
+        <%= f.submit "更新", class:"btn btn-primary" %></td>
+      <% end %>
+  </tr>
+</tbody>
+
+<table class="table table-cndensed">
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価（税込）</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th>製作ステータス</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order.order_details.each do |order_detail| %>
+    <tr>
+      <td><%= order_detail.item.name %></td>
+      <td><%= (order_detail.price.* 1.1).round.to_s(:delimited) %></td>
+      <td><%= order_detail.amount %></td>
+      <td><%= ((order_detail.price * 1.1) * order_detail.amount).round.to_s(:delimited) %></td>
+      <td>
+        <%= form_with model: order_detail, url: admins_order_detail_path(order_detail), local: true do |f| %>
+          <%= f.select :making_status, OrderDetail.making_statuses.keys, value: @order.id %>
+      </td>
+      <td><%= f.submit "更新", class:"btn btn-primary" %></td>
+      <% end %>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<tbody>
+  <tr>
+    <th>商品合計</th>
+    <td>
+      <% @order.order_details.each do |order_detail| %>
+        <% sub_total = (order_detail.item.price.*1.1.* order_detail.amount) %>
+        <% @total += sub_total %>
+      <% end %>
+      <%= (@total).round.to_s(:delimited) %>円
+    </td>
+  </tr>
+  <tr>
+    <th>送料</th>
+    <td><%= @order.shipping_cost %>円</td>
+  </tr>
+  <tr>
+    <th>請求金額合計</th>
+    <td><%= (@total + 800).round.to_s(:delimited) %>円</td>
+  </tr>
+</tbody>

@@ -1,0 +1,235 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+header {
+  width: 100%;
+  height: 50px;
+  background-color: #ead2e6;
+  border-bottom: 2px solid;
+}
+
+.header-title {
+  float: left;
+  font-size: 20px;
+  paddong-top: 10px;
+  background-size: cover;
+  background-position: center;
+}
+
+.container-fluid {
+  background-color: #f1d9e9;
+  border-bottom: 2px solid;
+}
+
+h6 {
+	float: left;
+	margin: 0 0 0 15px;
+}
+
+h6 a {
+		display: block;
+		width: 64px;
+		height: 69px;
+		font-size: 0;
+		background: url(illustrain09-okashi1.png) left top/64px auto no-repeat;
+	}
+	
+.header-logo {
+  font-size: 20px;
+  display: inline-block;
+  color: #b7334b;
+  padding: 15px 0px 0px;
+  font-weight: 900;
+} 
+
+.header-nav {
+  float: left;
+  list-style: none;
+  padding: 15px 15px;
+  text-decoration: none;
+}
+
+.header-nav-div{
+  float: right;
+}
+
+.header-customer-name {
+  color: #f70b16;
+  font-size: 15px;
+  font-weight: 600;
+  padding-top: 5px;
+}
+
+.btn-square-so-pop {
+  position: relative;
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #FFF;
+  background: #da214c73; //色
+  border-radius: 4px; //角の丸み
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), inset 0 -2px 0 rgba(0, 0, 0, 0.05);
+  font-weight: bold;
+  border: solid 2px #d27d00; //線色
+}
+
+.btn-square-so-pop:active { //押したとき//
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+}
+
+// body //
+
+.background-image {
+  background-image: linear-gradient( 130deg, rgba(250, 112, 246, 0.4), rgba(254, 225, 64, 0.6)), url(suites-3781068_1920);
+  background-size: cover;
+  background-position: center;
+}
+
+.table-bordered {
+  background-color: white;
+}
+
+th {
+  background-color: #ffdead;
+}
+
+.container {
+  height: 700px;
+}
+
+h2 {
+  display: inline-block;
+  background-color: #f198d7cf;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+.destroy_all {
+  float: right;
+}
+
+.send-btn{
+  display: flex;
+  justify-content: center;
+}
+
+.paginate1 {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #e08197;
+  border-color: #dea841;
+}
+
+.field {
+  display: inline-block;
+}
+
+.field-under{
+  margin-bottom: 4px;
+}
+
+.customer-profile {
+  display: inline-block;
+  font-size: 16px;
+  padding-bottom: 10px;
+}
+
+.unsubscribe-btn {
+  float: right;
+}
+
+.actions-new {
+  text-align: center;
+}
+
+.customer-session-new {
+  text-align : center;
+}
+
+.about {
+  text-align: center;
+}
+
+.about-image {
+  background: url(animals-2808564_640.jpg);
+  background-size: cover;
+  background-position: center;
+  width: 400px;
+  height: 280px;
+  margin: 0 auto;
+}
+
+.about-text {
+  display: inline-block;
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.pagination {
+    display: inline-block;
+    padding-left: 0;
+    margin: 0;
+    border-radius: 4px;
+}
+
+// footer //
+footer {
+  width: 100%;
+  height: 150px;
+  text-align: center;
+  line-height: 150px;
+  border-top: 2px solid ;
+  border-bottom: 2px solid ;
+}
+
+//Admin/session のレイアウト
+.session-main {
+  text-align: center;
+}
+
+.session-field {
+  margin-top: 20px;
+}
+
+input[type="email"] {
+        width: 300px;
+        height: 40px;
+        margin-left: 17px;
+    }
+
+input[type="password"] {
+        width: 300px;
+        height: 40px;
+        margin-left: 40px;
+    }
+
+.resister-btn {
+  float: righ;
+}
+

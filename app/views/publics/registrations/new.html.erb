@@ -1,0 +1,81 @@
+<br>
+<br>
+<br>
+<%= render "publics/shared/error_messages", resource: resource %>
+<h2>新規会員登録</h2>
+<div class="row" style="width: 80%;">
+<div class="col-lg-4">
+  <div class="customer-profile">名前</div><br>
+  <div class="customer-profile">フリガナ</div><br>
+  <div class="customer-profile">メールアドレス</div><br>
+  <div class="customer-profile">郵便番号(ハイフンなし)</div><br>
+  <div class="customer-profile">住所</div><br>
+  <div class="customer-profile">電話番号(ハイフンなし)</div>
+  <div class="customer-profile">パスワード(6文字以上)</div>
+  <div class="customer-profile">パスワード(確認用)</div>
+</div>
+
+<div class="col-lg-8" style="width:55%;">
+<%= form_with model: @customer, url: customers_sign_up_path, id: 'new_user', class: 'new_user', local: true do |f| %>
+
+  <div class="field">
+    <%= f.label :"　（姓)" %>
+    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"　（名)" %>
+    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+  </div><br>
+
+  <div class="field">
+    <%= f.label :"（セイ)" %>
+    <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"（メイ)" %>
+    <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana" %>
+  </div><br>
+
+  <div class="field">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "field-under" %>
+  </div><br>
+
+   <div class="field">
+    <%= f.text_field :postcode, autofocus: true, autocomplete: "postcode", class: "field-under" %>
+   </div><br>
+
+    <div class="field">
+    <%= f.text_field :address, autofocus: true, autocomplete: "address", class: "field-under" %>
+    </div><br>
+
+
+    <%= f.text_field :phonenumber, autofocus: true, autocomplete: "address", class: "field-under" %>
+    </div><br>
+
+  <div class="field">
+    <%= f.password_field :password, autocomplete: "new-password", class: "field-under" %>
+  </div><br>
+
+  <div class="field">
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "field-under" %>
+  </div><br>
+
+  <div class="actions-new">
+    <%= f.submit "新規登録", class: "btn btn-primary" %>
+  </div>
+<% end %>
+</div>
+</div>
+
+<div calss="row">
+  <h3>既に登録済みの方</h3>
+  <div>
+  <%= link_to "こちら", customers_sign_in_path %>からログインしてください。
+  </div>
+</div>
+
+
+<!--後程修正-->
+<!--<= render "publics/shared/links" %>-->

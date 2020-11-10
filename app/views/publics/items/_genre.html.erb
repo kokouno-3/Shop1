@@ -1,0 +1,16 @@
+<table class="table table-bordered">
+  <thead>
+    <tr><th>ジャンル検索</th></tr>
+  </thead>
+  <tbody>
+    <% Genre.all.each do |genre| %>
+    <% if genre.is_status == '有効' %>
+    <tr>
+      <td>
+        <%= link_to genre.name, genre_items_path(genre) %> <br>
+      </td>
+    </tr>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
