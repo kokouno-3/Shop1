@@ -1,13 +1,12 @@
-<div class="item-container">
-  <% @items.each do |item| %>
+
+  <% items.each do |item| %>
+  <div class="item-all">
     <%= link_to item_path(item.id) do %>
-      <div class="img_field" style="display:inline-block;">
-        <div class="col-xs-6">
-          <%= attachment_image_tag item, :image, size: "250x250", format: 'jpeg', fallback: "no-image.png" %>
+        <div>
+          <%= attachment_image_tag item, :image, size: "120x120", format: 'jpeg', fallback: "no-image.png" %>
         </div>
-        </div>
-        <div class="item-field">
-          <div class="col-xs-6">
+
+          <div>
             <p><%= item.name %></p>
             <% if item.is_status == '販売中' %>
               <p>¥<%= item.price.to_s(:delimited) %></p>
@@ -15,8 +14,9 @@
               <p>売切れ</p>
             <% end %>
           </div>
+          </div>
       <% end %>
-  <% end %>
-</div>
-</div>
-</div>
+   <% end %>
+   <div style="margin-top: 20px;">
+   <%= paginate(@items) %>
+   </div>
