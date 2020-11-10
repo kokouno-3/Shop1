@@ -19,17 +19,18 @@ Rails.application.routes.draw do
   get 'customers/password/edit', to: 'devise/passwords#edit'
   patch '/customers/password', to: 'devise/passwords#update'
   put '/customers/password', to: 'devise/passwords#update'
-  get 'login' => 'devise/sessions#new', as: :new_customer_session
-  post 'login' => 'devise/sessions#create', as: :customer_session
-  get 'signup' => 'devise/registrations#new', as: :new_customer_registration
-  post 'signup' => 'devise/registrations#create', as: :customer_registration
-  get 'password' => 'devise/passwords#new', as: :new_customer_password
-  post 'password' => 'devise/passwords#create', as: :customer_password
+  get 'login' => 'publics/sessions#new', as: :new_customer_session
+  post 'login' => 'publics/sessions#create', as: :customer_session
+  get 'signup' => 'publics/registrations#new', as: :new_customer_registration
+  post 'signup' => 'publics/registrations#create', as: :customer_registration
+  get 'password' => 'publics/passwords#new', as: :new_customer_password
+  post 'password' => 'publics/passwords#create', as: :customer_password
   end
 
   root "publics/homes#top"
   get "/about" => "publics/homes#about"
-
+  get "/customers/unsubscribe" => "publics/customers#unsubscribe"
+  patch "/customers/withdraw" => "publics/customers#withdraw"
   scope module: :publics do
   resources :items, only:[:index, :show]
   get 'genre_items/:id' => "items#genre_items", as: "genre_items"
@@ -43,8 +44,6 @@ Rails.application.routes.draw do
 
   end
 
-  get "/customers/unsubscribe" => "publics/customers#unsubscribe"
-  patch "/customers/withdraw" => "publics/customers#withdraw"
 
   namespace :admins do
   get "/" => "homes#top"

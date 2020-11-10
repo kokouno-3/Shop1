@@ -19,13 +19,15 @@ class Publics::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  protected #退会ユーザーはログイン不可
+  #退会ユーザーはログイン不可
+  before_action :reject_customers, only: [:create]
+  protected
     def reject_customers
-      customer = Customer.find_by(email: params[:customer][:email].downcase)
-      if customer
-        if (@customer.valid_password?(params[:customer][:password]) && (@customer.active_for_authentication? == true))
+      @customer = Customer.find_by(email: params[:customer][:email].downcase)
+      if @customer
+        if (@customer.valid_password?(params[:customer][:password]) && (@customer.active_for_authentication? == '退会済み'))
           flash[:error] = "退会済みです。"
-          redirect_to customers_sign_in_path
+          redirect_to new_customer_session_path
         end
       else
         flash[:error] = "必須項目を入力してください"
