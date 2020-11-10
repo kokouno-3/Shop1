@@ -1,4 +1,8 @@
-<h2>本当に退会しますか?</h2>
+<br>
+<br>
+<br>
+<div class="unsubscribe-main">
+<div class="unsubscribe">本当に退会しますか?</div>
 
 <p>
   退会すると、会員登録情報や<br>
@@ -6,5 +10,6 @@
   退会する場合は、「退会する」をクリックしてください。<br>
 </p>
 
-<%= link_to "退会しない", customer_path(current_customer.id) %>
-<%= link_to "退会する", customers_withdraw_path(@customer), method: :patch, data: { confirm: '本当に退会しますか？' } %><!--修正箇所-->
+<%= link_to "退会しない", customer_path(current_customer.id), class: "btn btn-primary" %>
+<%= link_to "退会する", customers_withdraw_path(@customer), method: :patch, data: { confirm: '本当に退会しますか？' }, class: "btn btn-danger" %><!--修正箇所-->
+</div>
