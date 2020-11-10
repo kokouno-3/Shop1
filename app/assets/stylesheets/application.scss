@@ -56,14 +56,14 @@ h6 a {
 		font-size: 0;
 		background: url(illustrain09-okashi1.png) left top/64px auto no-repeat;
 	}
-	
+
 .header-logo {
   font-size: 20px;
   display: inline-block;
   color: #b7334b;
   padding: 15px 0px 0px;
   font-weight: 900;
-} 
+}
 
 .header-nav {
   float: left;
@@ -321,5 +321,20 @@ input[type="password"] {
 
 .resister-btn {
   float: righ;
+}
+
+.item-container {
+  float: left;
+  margin-right: 20px;
+}
+
+.item-picture {
+  margin-top: 20px;
+  flex-wrap:wrap;
+  display: flex;
+}
+
+.item-all {
+  margin-right: 20px;
 }
 
