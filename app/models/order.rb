@@ -3,7 +3,6 @@ class Order < ApplicationRecord
   belongs_to :customer
 
   validates :postcode, :address, :name, presence: true
-  # validates :order, inclusion: {in: [1, 2, 3]}
 
    enum pay_way: {
     クレジット: 0,

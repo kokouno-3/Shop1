@@ -25,8 +25,12 @@ class Publics::CartsController < ApplicationController
     else
       @cart = Cart.new(cart_params)
       @cart.customer_id = current_customer.id
-      @cart.save
-      redirect_to carts_path
+      if @cart.save
+        redirect_to carts_path
+      else
+        flash[:notice] = "カートに入れる個数を入力してください"
+        redirect_back(fallback_location: root_path)
+      end
     end
   end
 
