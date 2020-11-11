@@ -2,7 +2,7 @@
 
 
 <%= form_with model: @customer, url: admins_customer_path(@customer), class: 'edit_admins_customer', local: true do |f| %>
-
+<%= render 'layouts/error_messages', model: f.object %>
 　<div class="field">
     <%= f.label :"会員ＩＤ" %>  <%= @customer.id %>
   </div>

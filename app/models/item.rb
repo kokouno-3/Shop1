@@ -9,6 +9,6 @@ class Item < ApplicationRecord
     '販売中止': false
   }
 
-  validates :name, :explanation, :price, presence: true
+  validates :name, :explanation, :price, :genre_id, :is_status, presence: true
 
 end

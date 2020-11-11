@@ -3,6 +3,7 @@
 <br>
 <h2>配送先登録/一覧</h2>
 <%= form_with model: @address, url: addresses_path(@address.id), class: "form", local: true do |f| %>
+<%= render 'layouts/error_messages', model: @address %>
   <div class="address-field">
     <div>郵便番号(ハイフンなし)</div>
       <dd><%= f.text_field :postcode %></dd>

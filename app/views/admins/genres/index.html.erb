@@ -1,17 +1,9 @@
 <h2 style="margin: 30px 0 50px 100px ;">ジャンル一覧・追加</h2>
 
   <div class="row">
-    <% if @genre.errors.any? %>
-        <div id="erro_explanation" class="alert alert-danger">
-          <ul>
-            <%= @genre.errors.full_messages.each do |message| %>
-              <li><%= message%></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
 
       <%= form_with model: @genre, url: admins_genres_path, local: true do |f| %>
+      <%= render 'layouts/error_messages', model: @genre %>
       <!--<div class="col-xs-3">-->
       <div class="genre-container">
         <p>ジャンル</p>

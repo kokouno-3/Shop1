@@ -20,17 +20,19 @@ Rails.application.routes.draw do
   patch 'customers/password', to: 'publics/passwords#update'
   put 'customers/password', to: 'publics/passwords#update'
   get 'login' => 'publics/sessions#new', as: :new_customer_session
-  post 'login' => 'devise/sessions#create', as: :customer_session
-  get 'signup' => 'devise/registrations#new', as: :new_customer_registration
-  post 'signup' => 'devise/registrations#create', as: :customer_registration
+  post 'login' => 'publics/sessions#create', as: :customer_session
+  get 'signup' => 'publics/registrations#new', as: :new_customer_registration
+  post 'signup' => 'publics/registrations#create', as: :customer_registration
   get 'password' => 'publics/passwords#new', as: :new_customer_password
-  post 'password' => 'devise/passwords#create', as: :customer_password
+  post 'password' => 'publics/passwords#create', as: :customer_password
   end
 
   root "publics/homes#top"
   get "/about" => "publics/homes#about"
 
   scope module: :publics do
+   get "/customers/unsubscribe" => "customers#unsubscribe"
+  patch "/customers/withdraw" => "customers#withdraw"
   resources :items, only:[:index, :show]
   get 'genre_items/:id' => "items#genre_items", as: "genre_items"
   get "/orders/complete" => "orders#complete"
@@ -38,14 +40,11 @@ Rails.application.routes.draw do
   resources :orders, only:[:new, :create, :index, :show]
   delete "/carts/destroy_all" => "carts#destroy_all"
   resources :carts, only:[:index, :update, :destroy, :create]
-  get "/customers/unsubscribe" => "customers#unsubscribe"
-  patch "/customers/withdraw" => "customers#withdraw"
   resources :customers, only:[:edit, :show, :update]
   resources :addresses, only:[:index, :create, :edit, :destroy, :update]
-
   end
 
-  
+
 
   namespace :admins do
   get "/" => "homes#top"

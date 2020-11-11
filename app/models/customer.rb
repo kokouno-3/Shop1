@@ -8,13 +8,22 @@ class Customer < ApplicationRecord
   has_many :carts, dependent: :destroy
   has_many :addresses, dependent: :destroy
 
+  validates :last_name, presence: true
+  validates :first_name, presence: true
+  validates :last_name_kana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ } #全角カタカナのみ入力許可
+  validates :first_name_kana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
+  validates :postcode, presence: true, format: { with:/\A\d{7}\z/ }
+  validates :address, presence: true
+  validates :phonenumber, presence: true
+  validates :email, presence: true
+  validates :encrypted_password, presence: true
+
   enum is_deleted: {
     有効: false,
     退会済み: true
   }
-  #修正箇所ーーーーーdeletedがfalseの場合はログイン可能
+  #deletedがfalse(有効)の場合はログイン可能
   def active_for_authentication?
-  super && (self.is_deleted == '有効')
+  super && (self.is_deleted == '有効' )
   end
-  #ココまでーーーーー
 end

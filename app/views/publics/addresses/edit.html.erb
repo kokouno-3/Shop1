@@ -3,6 +3,7 @@
 <br>
 <h2>配送先編集</h2>
   <%= form_with model: @address, url: address_path(@address.id) , method: :patch, class: "form", local: true do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
     <div class="edit-address">
       <dt>郵便番号(ハイフンなし)</dt>
         <dd><%= f.text_field :postcode %></dd>
