@@ -179,6 +179,15 @@ h2 {
 
 //customer-registations
 
+form > .registations-customer > dt {
+  display: inline-block;
+  margin: 5px 0 10px 20px;
+  font-size: 15px;
+  width: 200px;
+  float: left;
+  clear: both;
+}
+
 .actions-new {
   text-align: center;
 }
@@ -205,7 +214,6 @@ h2 {
 }
 
 .about-text {
-  display: inline-block;
   font-size: 25px;
   font-weight: 600;
 }
@@ -288,6 +296,7 @@ form > .edit-address > dt {
   margin-bottom: 20px;
 }
 
+
 //////////////////////// footer ///////////////////////////
 footer {
   width: 100%;
@@ -309,22 +318,21 @@ footer {
 
 input[type="email"] {
         width: 300px;
-        height: 40px;
-        margin-left: 17px;
-    }
+        height: 30px;
+}
 
 input[type="password"] {
         width: 300px;
-        height: 40px;
-        margin-left: 40px;
-    }
+        height: 30px;
+
+}
 
 .resister-btn {
   float: righ;
 }
 
 .item-container {
-  float: left;
+  //float: left;
   margin-right: 20px;
 }
 

@@ -1,5 +1,4 @@
 <h2 style="margin: 30px 0 100px 100px ;">商品編集</h2>
-
   <div class="row">
     <%= form_with model: @item, url: admins_item_path(@item), local: true do |f| %>
     <%= render 'layouts/error_messages', model: f.object %>
@@ -11,21 +10,16 @@
     </div>
     <div class="col-xs-3">
       <h4>商品名</h4>
-      <%= f.text_field :name, class:"form-control" %>
-
+        <%= f.text_field :name, class:"form-control" %>
       <h4>商品説明</h4>
-      <%= f.text_area :explanation, class:"form-control"  %>
-
+        <%= f.text_area :explanation, class:"form-control"  %>
       <h4>ジャンル</h4>
       <%= f.collection_select(:genre_id, Genre.all, :id, :name, {prompt: "選択してください"}) %>
-
       <h4>税抜価格</h4>
-      <%= f.text_field :price, class:"form-control" %>円
-
+        <%= f.text_field :price, class:"form-control" %>円
       <h4>販売ステータス</h4>
-      <%= f.select :is_status, [['販売中','販売中'],['販売中止', '販売中止']], {prompt: "選択してください"} %>
-
-      <%= f.submit "変更を保存", class: "btn btn-primary" %>
+        <%= f.select :is_status, [['販売中','販売中'],['販売中止', '販売中止']], {prompt: "選択してください"} %>
+        <%= f.submit "変更を保存", class: "btn btn-primary" %>
+    <% end %>
     </div>
-  <% end %>
   </div>

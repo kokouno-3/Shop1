@@ -1,22 +1,20 @@
-
-  <% items.each do |item| %>
+<% items.each do |item| %>
   <div class="item-all">
     <%= link_to item_path(item.id) do %>
-        <div>
-          <%= attachment_image_tag item, :image, size: "120x120", format: 'jpeg', fallback: "no-image.png" %>
-        </div>
-
-          <div>
-            <p><%= item.name %></p>
-            <% if item.is_status == '販売中' %>
-              <p>¥<%= item.price.to_s(:delimited) %></p>
-            <% else item.is_status == '販売中止' %>
-              <p>売切れ</p>
-            <% end %>
-          </div>
-          </div>
+    <div>
+      <%= attachment_image_tag item, :image, size: "120x120", format: 'jpeg', fallback: "no-image.png" %>
+    </div>
+    <div>
+      <p><%= item.name %></p>
+      <% if item.is_status == '販売中' %>
+      <p>¥<%= item.price.to_s(:delimited) %></p>
+      <% else item.is_status == '販売中止' %>
+      <p>売切れ</p>
       <% end %>
-   <% end %>
-   <div style="margin-top: 20px;">
-   <%= paginate(@items) %>
-   </div>
+    </div>
+  </div>
+    <% end %>
+    <% end %>
+    <div style="margin-top: 20px;">
+      <%= paginate(@items) %>
+    </div>

@@ -6,11 +6,9 @@
 <%= render 'layouts/error_messages', model: @address %>
   <div class="address-field">
     <div>郵便番号(ハイフンなし)</div>
-      <dd><%= f.text_field :postcode %></dd>
-    <br>
+      <dd><%= f.text_field :postcode %></dd><br>
     <div>住所</div>
-      <dd><%= f.text_field :address %></dd>
-    <br>
+      <dd><%= f.text_field :address %></dd><br>
     <div>宛名</div>
       <dd><%= f.text_field :name %></dd>
       <dd><%= f.submit '登録する', class: "btn btn-success", style: "margin:20px 0 0 100px;" %></dd>
@@ -46,7 +44,6 @@
         </td>
       </tr>
       <% end %>
-
-  </tbody>
-</table>
+    </tbody>
+  </table>
 

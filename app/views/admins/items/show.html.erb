@@ -1,12 +1,10 @@
  <h2 style="margin: 30px 0 100px 100px ;">商品詳細</h2>
-
   <div class="row">
     <div class="col-xs-4">
-    <div>
-      <%= attachment_image_tag @item, :image, size: "250x250", format: 'jpeg', fallback: "no-image.png" %>
+      <div>
+        <%= attachment_image_tag @item, :image, size: "250x250", format: 'jpeg', fallback: "no-image.png" %>
+      </div>
     </div>
-    </div>
-
     <div class="col-xs-５">
       <div class="item-field">
         <p>商品名  <%= @item.name %></p></br>
@@ -29,8 +27,7 @@
       <div class="item-field">
         <p>販売ステータス　　<%= @item.is_status %></p>
       </div>
-
-    <div>
-      <%= link_to "編集する", edit_admins_item_path, class: "btn btn-primary" %>
+      <div>
+        <%= link_to "編集する", edit_admins_item_path, class: "btn btn-primary" %>
+      </div>
     </div>
-  </div>

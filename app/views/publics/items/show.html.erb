@@ -1,8 +1,10 @@
+<br>
+<br>
+<br>
 <div class="row">
-<div class="col-xs-2">
+  <div class="col-xs-2">
     <%= render "genre", genres: @genres %>
 </div>
-
 <div class="col-xs-7" style="margin-top: 80px;">
   <%= flash[:notice] %>
   <div class="row">
@@ -26,16 +28,14 @@
           <%= f.number_field :amount, min: 1, max: 10, placeholder: "個数選択" %>個
           <%= f.hidden_field :item_id, value: @item.id %>
           <%= f.submit "カートに入れる", class: "btn btn-primary" %>
+          <% end %>
+        <% else %>
+          <h2>売切れ</h2>
         <% end %>
-      <% else %>
-        <h2>売切れ</h2>
-      <% end %>
-    <% elsif @item.is_status == '販売中止' %>
-      <h2>売切れ</h2>
-    <% end %>
-
+        <% elsif @item.is_status == '販売中止' %>
+          <h2>売切れ</h2>
+        <% end %>
       </div>
     </div>
-
   </div>
 </div>

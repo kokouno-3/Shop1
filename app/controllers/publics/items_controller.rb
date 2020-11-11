@@ -1,5 +1,6 @@
 class Publics::ItemsController < ApplicationController
   layout 'publics/header'
+  
   def index
     @items = Item.all.page(params[:page]).per(8)
     @customer = current_customer

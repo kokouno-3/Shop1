@@ -1,7 +1,5 @@
-
 <h2 style="margin: 30px 0 100px 100px;">商品新規登録</h2>
   <div class="row">
-
       <%= form_with model: @item, url: admins_items_path, local: true do |f| %>
       <%= render 'layouts/error_messages', model: f.object %>
       <div class="col-xs-5" >
@@ -9,7 +7,6 @@
 		    	<%= attachment_image_tag @item, :image, class: "img", fallback: "no-image.png", size:"300x300" %>
 				<%= f.attachment_field :image %>
 			</div>
-
 			<!-- 画像プレビュー -->
 			<script>
 			   $(function(){
@@ -27,19 +24,15 @@
 		       });
 		    </script>
 		</div>
-
       <div class="col-xs-7">
-
         <h4>商品名</h4>
         <div class="item-form">
         <%= f.text_field :name, class:"form-control" %>
-        </div>
-
-        <h4>商品説明</h4>
-        <div class="item-explanation">
+      </div>
+      <h4>商品説明</h4>
+      <div class="item-explanation">
         <%= f.text_area :explanation, class:"form-control"  %>
         </div>
-
         <h4>ジャンル</h4>
         <div class="item-genre">
         <%= f.collection_select(:genre_id, Genre.all, :id, :name, {prompt: "選択してください"}) %>
@@ -47,11 +40,11 @@
 
         <h4>税抜価格</h4>
         <div class="item-price">
-        <%= f.text_field :price, class:"form-control" %>円
-        </div>
 
-        <h4>販売ステータス</h4>
-        <div class="item-status">
+        <%= f.text_field :price, class:"form-control" %>円
+      </div>
+      <h4>販売ステータス</h4>
+      <div class="item-status">
         <%= f.select :is_status, [['販売中','販売中'],['販売中止', '販売中止']], {prompt: "選択してください"} %>
         </div>
         <div style="padding-top:10px;">

@@ -10,5 +10,4 @@ class Item < ApplicationRecord
   }
 
   validates :name, :explanation, :price, :genre_id, :is_status, presence: true
-
 end
