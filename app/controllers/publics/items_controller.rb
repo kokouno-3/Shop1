@@ -8,8 +8,11 @@ class Publics::ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    @genre = Genre.find(params[:id])
+    @genre = Genre.all
     @cart = Cart.new
+    if @cart.amount == "個数選択"
+      redirect_to item_path(item)
+    end
     @customer = current_customer
   end
 

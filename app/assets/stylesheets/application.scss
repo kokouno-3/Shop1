@@ -346,3 +346,7 @@ input[type="password"] {
   margin-right: 20px;
 }
 
+// バリデーションエラーによるレイアウト崩れ防止
+.field_with_errors {
+  display: contents;
+}

@@ -2,6 +2,8 @@ class Order < ApplicationRecord
   has_many :order_details, dependent: :destroy
   belongs_to :customer
 
+  validates :postcode, :address, :name, presence: true
+
    enum pay_way: {
     クレジット: 0,
     銀行振込: 1

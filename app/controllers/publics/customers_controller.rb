@@ -3,17 +3,20 @@ class Publics::CustomersController < ApplicationController
   layout 'publics/header'
 
   def show
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
   end
 
   def edit
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
   end
 
   def update
-    @customer = Customer.find(params[:id])
-    @customer.update(customer_params)
-    redirect_to customer_path(current_customer.id)
+    @customer = current_customer
+    if @customer.update(customer_params)
+      redirect_to customer_path(current_customer.id)
+    else
+      render :edit
+    end
   end
 
   def unsubscribe
@@ -21,10 +24,11 @@ class Publics::CustomersController < ApplicationController
   end
 
   def withdraw
-    @customer = current_customer
+   @customer = current_customer
+    #is_deletedカラムにフラグを立てる（defaultfalse(有効)をtrue(退会済み)にする）
     @customer.update(is_deleted: '退会済み')
-    reset_session
-    redirect_to customers_sign_in_path
+    reset_session #ログアウトさせる
+    redirect_to root_path
   end
 
 private

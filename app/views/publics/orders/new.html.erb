@@ -3,6 +3,7 @@
 <br>
 <h2>注文情報入力</h2>
   <%= form_with model: @order, url: orders_confirm_path, class: 'edit_admins_customer', local: true do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
     <div class="field">
       <h4 style="font-size:20px;">支払方法</h4>
     </div>
@@ -20,7 +21,7 @@
       </div>
       <div><%= f.radio_button :order, 1 %>登録済住所から選択</div>
            <%= f.collection_select :id, @addresses, :id, :shipping_info %>
-      <div><%= f.radio_button :order, "新しいお届け先" %>新しいお届け先</div>
+      <div><%= f.radio_button :order, 2 %>新しいお届け先</div>
       <div>郵便番号(ハイフンなし)
         <%= f.text_field :postcode, autofocus: true, autocomplete: "postcode" %>
       </div><br>

@@ -1,15 +1,7 @@
-<% if @genre.errors.any? %>
-  <div id="erro_explanation" class="alert alert-danger">
-    <ul>
-      <%= @genre.errors.full_messages.each do |message| %>
-        <li><%= message%></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
   <h2 style="margin: 30px 0 50px 100px ;">ジャンル編集</h2>
   <div class="row">
-    <%= form_with model: @genre, url: admins_genre_path(@genre), method: :patch, local: true do |f| %>
+      <%= form_with model: @genre, url: admins_genre_path(@genre), method: :patch, local: true do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
       <div class="genre-container">
         <p>ジャンル</p>
           <%= f.text_field :name, class: "form-control" %>
