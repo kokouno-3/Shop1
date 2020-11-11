@@ -1,5 +1,6 @@
 class Publics::ItemsController < ApplicationController
   layout 'publics/header'
+  
   def index
     @items = Item.all.page(params[:page]).per(8)
     @customer = current_customer
@@ -15,6 +16,7 @@ class Publics::ItemsController < ApplicationController
   def genre_items
     @genre = Genre.find(params[:id])
     @items = @genre.items.all
+    @items = @items.page(params[:page])
     @customer = current_customer
   end
 

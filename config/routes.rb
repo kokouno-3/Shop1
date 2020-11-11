@@ -20,11 +20,11 @@ Rails.application.routes.draw do
   patch 'customers/password', to: 'publics/passwords#update'
   put 'customers/password', to: 'publics/passwords#update'
   get 'login' => 'publics/sessions#new', as: :new_customer_session
-  post 'login' => 'devise/sessions#create', as: :customer_session
-  get 'signup' => 'devise/registrations#new', as: :new_customer_registration
-  post 'signup' => 'devise/registrations#create', as: :customer_registration
+  post 'login' => 'publics/sessions#create', as: :customer_session
+  get 'signup' => 'publics/registrations#new', as: :new_customer_registration
+  post 'signup' => 'publics/registrations#create', as: :customer_registration
   get 'password' => 'publics/passwords#new', as: :new_customer_password
-  post 'password' => 'devise/passwords#create', as: :customer_password
+  post 'password' => 'publics/passwords#create', as: :customer_password
   end
 
   root "publics/homes#top"

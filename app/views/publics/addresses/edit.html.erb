@@ -5,13 +5,11 @@
   <%= form_with model: @address, url: address_path(@address.id) , method: :patch, class: "form", local: true do |f| %>
     <div class="edit-address">
       <dt>郵便番号(ハイフンなし)</dt>
-        <dd><%= f.text_field :postcode %></dd>
-      <br>
+        <dd><%= f.text_field :postcode %></dd><br>
       <dt>住所</dt>
-        <dd><%= f.text_field :address %></dd>
-      <br>
+        <dd><%= f.text_field :address %></dd><br>
       <dt>宛名</dt>
         <dd><%= f.text_field :name %></dd>
         <dd><%= f.submit '編集する', class: "btn btn-primary", style: "margin:20px 0 0 100px;" %></dd>
     </div>
-  <% end %>
+    <% end %>
