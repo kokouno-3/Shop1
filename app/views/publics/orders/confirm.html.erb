@@ -2,7 +2,6 @@
 <br>
 <br>
 <h2>注文情報確認</h2>
-
 <div class="row">
   <div class="col-lg-9">
     <table class="table table-bordered">
@@ -15,7 +14,6 @@
           <th style="width:10%;"></th>
         </tr>
       </thead>
-
       <tbody>
         <% @carts.each do |cart| %>
         <tr>
@@ -58,7 +56,7 @@
         <tr>
           <th>請求額</th><td><%= (@total.round + 800).to_s(:delimited) %></th>
         </tr>
-      </body>
+      </tbody>
     </table>
   </div>
 </div>

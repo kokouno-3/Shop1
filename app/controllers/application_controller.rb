@@ -10,14 +10,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
-   def after_sign_in_path_for(resource)
-     case resource
-       when Admin
-         admins_path # ログイン後に遷移するpathを設定(admin側)
-       when Customer
-         items_path  # ログイン後に遷移するpathを設定(customer側)
-     end
-   end
+  def after_sign_in_path_for(resource)
+    case resource
+      when Admin
+        admins_path # ログイン後に遷移するpathを設定(admin側)
+      when Customer
+        root_path  # ログイン後に遷移するpathを設定(customer側)
+    end
+  end
 
   protected
 

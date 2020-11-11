@@ -21,14 +21,11 @@ class Publics::CustomersController < ApplicationController
   end
 
   def withdraw
-   @customer = current_customer
-   @customer.update(is_deleted: '退会済み')
-   #@customer = Customer.find(params[:id])
-   #@customer.update(is_deleted: true)
+    @customer = current_customer
+    @customer.update(is_deleted: '退会済み')
     reset_session
     redirect_to customers_sign_in_path
   end
-
 
 private
   def customer_params

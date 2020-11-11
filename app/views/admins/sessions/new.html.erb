@@ -1,23 +1,18 @@
-	<div class="row">
-
+<div class="row">
 <div class="session-main">
-    <h2 style="margin-top: 50px; margin-right: 500px">管理者ログイン</h2>
-
-  <%= form_with model: @admin, url: admins_sign_in_path, local: true do |f| %>
-  <div class="field session-field">
-    <%= f.label :メールアドレス %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <h2 style="margin-top: 50px; margin-right: 500px">管理者ログイン</h2>
+    <%= form_with model: @admin, url: admins_sign_in_path, local: true do |f| %>
+    <div class="field session-field">
+      <%= f.label :"メールアドレス" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div><br>
+    <div class="field session-field">
+      <%= f.label :"パスワード　　" %>
+      <%= f.password_field :password, autocomplete: "current-password" %>
+    </div><br>
+    <div class="actions" style="margin-top: 30px" >
+      <%= f.submit "ログイン", class: "btn btn-primary btn-lg" %>
+    </div>
+</div>
+  <% end %>
   </div>
-
-  <div class="field session-field">
-    <%= f.label :パスワード %>
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <br>
-  <div class="actions" style="margin-top: 30px" >
-    <%= f.submit "ログイン", class: "btn btn-primary btn-lg" %>
-  </div>
-  </div>
- <% end %>
- </div>
