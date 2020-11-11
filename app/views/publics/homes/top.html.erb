@@ -1,35 +1,35 @@
+<br>
+<br>
+<br>
 <div class="row">
   <div class="col-lg-2">
     <%= render "publics/items/genre", genres: @genres %>
   </div>
-
-<div class="col-lg-7" style="margin-top: 50px;">
-  <p class = top-message>
-    ようこそ、NaganoCakeへ！<br>
-    このサイトは、ケーキ販売のECサイトになります。<br>
-    会員でない方も商品の閲覧はできますが、<br>
-    購入には会員登録が必要になります。
-  </p>
-
+  <div class="col-lg-7">
+    <p class = top-message>
+      ようこそ、NaganoCakeへ！<br>
+      このサイトは、ケーキ販売のECサイトになります。<br>
+      会員でない方も商品の閲覧はできますが、<br>
+      購入には会員登録が必要になります。
+    </p>
     <div class="recommend">
       <h2 style = "margin-bottom: 30px">オススメ商品</h2>
-      <div>
-        <% @items.each do |item| %>
-        <%= link_to item_path(item) do %>
-            <div class="img_field" style="display:inline-block; margin-right: 20px">
-                 <%= attachment_image_tag item, :image, size: "120x120", format: 'jpeg', fallback: "no-image.png" %>
-            <div class="item-field" style="color:black; margin-top:20px; background-color: #f198d7cf;">
-                <p><%= item.name %></p>
-                <p>(税込)¥<%= (item.price.* 1.1).round.to_s(:delimited) %></p>
-            </div>
-          </div>
-        <% end %>
-        <% end %>
+    <div>
+      <% @items.each do |item| %>
+      <%= link_to item_path(item) do %>
+      <div class="img_field" style="display:inline-block; margin-right: 20px">
+        <%= attachment_image_tag item, :image, size: "120x120", format: 'jpeg', fallback: "no-image.png" %>
+        <div class="item-field" style="color:black; margin-top:20px; background-color: #f198d7cf;">
+          <p><%= item.name %></p>
+          <p>(税込)¥<%= (item.price.* 1.1).round.to_s(:delimited) %></p>
+        </div>
       </div>
+      <% end %>
+      <% end %>
     </div>
-
-  <div style="float:right; font-size:15px; color:black;">
-		<%= link_to "もっと見る", items_path %><i class="fas fa-cheese fa-lg" style="color: saddlebrown"></i>
-	</div>
-</div>
-</div>
+    </div>
+    <div style="float:right; font-size:15px;">
+		  <%= link_to "もっと見る", items_path %><i class="fas fa-cheese fa-lg" style="color: saddlebrown"></i>
+	  </div>
+  </div>
+  </div>

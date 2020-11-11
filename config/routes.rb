@@ -31,6 +31,8 @@ Rails.application.routes.draw do
   get "/about" => "publics/homes#about"
 
   scope module: :publics do
+   get "/customers/unsubscribe" => "customers#unsubscribe"
+  patch "/customers/withdraw" => "customers#withdraw"
   resources :items, only:[:index, :show]
   get 'genre_items/:id' => "items#genre_items", as: "genre_items"
   get "/orders/complete" => "orders#complete"
@@ -38,11 +40,8 @@ Rails.application.routes.draw do
   resources :orders, only:[:new, :create, :index, :show]
   delete "/carts/destroy_all" => "carts#destroy_all"
   resources :carts, only:[:index, :update, :destroy, :create]
-  get "/customers/unsubscribe" => "customers#unsubscribe"
-  patch "/customers/withdraw" => "customers#withdraw"
   resources :customers, only:[:edit, :show, :update]
   resources :addresses, only:[:index, :create, :edit, :destroy, :update]
-
   end
 
 

@@ -1,28 +1,17 @@
-<% if @genre.errors.any? %>
-  <div id="erro_explanation" class="alert alert-danger">
-    <ul>
-      <%= @genre.errors.full_messages.each do |message| %>
-        <li><%= message%></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-
   <h2 style="margin: 30px 0 50px 100px ;">ジャンル編集</h2>
   <div class="row">
       <%= form_with model: @genre, url: admins_genre_path(@genre), method: :patch, local: true do |f| %>
-      <!--<div class="col-xs-3">-->
+      <%= render 'layouts/error_messages', model: f.object %>
       <div class="genre-container">
         <p>ジャンル</p>
           <%= f.text_field :name, class: "form-control" %>
-        <div class="status-btn">
-          <%= f.radio_button :is_status, '有効' %>有効
-        </div>
-        <div class="status-btn">
-          <%= f.radio_button :is_status, '無効' %>無効
-        </div>
+          <div class="status-btn">
+            <%= f.radio_button :is_status, '有効' %>有効
+          </div>
+          <div class="status-btn">
+            <%= f.radio_button :is_status, '無効' %>無効
+          </div>
           <%= f.submit "変更を保存する", class: "btn btn-primary" %>
       </div>
-      <!--</div>-->
-      <% end %>
+    <% end %>
   </div>

@@ -1,15 +1,17 @@
-<div class="row">
+ <br>
+ <br>
+ <br>
+ <div class="row">
   <div class="col-xs-2">
     <%= render "genre", genres: @genres %>
   </div>
-
   <div class="col-xs-7">
-    <h2 style="margin-top: 50px;">商品一覧</h2>
+    <h2>商品一覧</h2>
     <span>(全<%= @items.count %>件)</span>
     <div class="item-container">
       <div class="item-picture">
-      <%= render 'items_index', items: @items %>
-    </div>
+        <%= render 'items_index', items: @items %>
+      </div>
     </div>
   </div>
 </div>
