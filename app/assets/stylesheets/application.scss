@@ -264,7 +264,7 @@ form > .edit-address > dt {
 
 .edit-address > dt > dd {
   padding: 10px 0;
-} 
+}
 
 .edit-address {
   margin-bottom: 20px;
@@ -336,5 +336,14 @@ input[type="password"] {
 
 .item-all {
   margin-right: 20px;
+}
+
+.item-price-container {
+  display: flex;
+  align-items: baseline;
+}
+
+.item-price {
+  margin-left: 5px;
 }
 

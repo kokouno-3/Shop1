@@ -1,6 +1,6 @@
 class Admins::ItemsController < ApplicationController
   before_action :authenticate_admin!
-   layout 'admins/header'
+  layout 'admins/header'
   def index
     @items = Item.all.page(params[:page]).per(10)
     @genres= Genre.all

@@ -19,11 +19,13 @@
       <%= f.collection_select(:genre_id, @genres, :id, :name, {prompt: "選択してください"}) %>
 
       <h4>税抜価格</h4>
-      <%= f.text_field :price, class:"form-control" %>円
+      <div class="item-price-container">
+      <div><%= f.text_field :price, class:"form-control" %></div>
+      <div class="item-price">円</div>
+      </div>
 
       <h4>販売ステータス</h4>
       <%= f.select :is_status, [['販売中','販売中'],['販売中止', '販売中止']], {prompt: "選択してください"} %>
-
       <%= f.submit "変更を保存", class: "btn btn-primary" %>
     </div>
   <% end %>

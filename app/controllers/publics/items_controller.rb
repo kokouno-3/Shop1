@@ -16,6 +16,7 @@ class Publics::ItemsController < ApplicationController
     @genre = Genre.find(params[:id])
     @items = @genre.items.all
     @customer = current_customer
+    @items = @items.page(params[:page])
   end
 
   private
