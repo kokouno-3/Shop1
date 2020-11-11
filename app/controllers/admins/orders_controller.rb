@@ -1,6 +1,6 @@
 class Admins::OrdersController < ApplicationController
   before_action :authenticate_admin!
-   layout 'admins/header'
+  layout 'admins/header'
   def index
     orders = Order.all.reverse_order
     @orders = orders.page(params[:page]).per(10)
