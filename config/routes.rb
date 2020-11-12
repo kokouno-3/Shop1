@@ -25,6 +25,9 @@ Rails.application.routes.draw do
   post 'signup' => 'publics/registrations#create', as: :customer_registration
   get 'password' => 'publics/passwords#new', as: :new_customer_password
   post 'password' => 'publics/passwords#create', as: :customer_password
+  #パスワード変更
+  get 'password/:id' => 'publics/registrations#edit', as: :edit_customer_registration
+  patch "password/:id" => 'publics/registrations#update', as: :update_customer_registration
   end
 
   root "publics/homes#top"

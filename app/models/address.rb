@@ -7,4 +7,5 @@ class Address < ApplicationRecord
 
   validates :address, :name, presence: true
   validates :postcode, presence: true
+
 end
