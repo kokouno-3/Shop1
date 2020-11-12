@@ -188,6 +188,14 @@ form > .registations-customer > dt {
   clear: both;
 }
 
+form > .registations-customer > dd {
+  margin-bottom: 10px;
+}
+
+.registations-under {
+  margin-left: 46px;
+}
+
 .actions-new {
   text-align: center;
 }
@@ -318,12 +326,12 @@ footer {
 
 input[type="email"] {
         width: 300px;
-        height: 30px;
+        height: 24px;
 }
 
 input[type="password"] {
         width: 300px;
-        height: 30px;
+        height: 24px;
 
 }
 
@@ -358,4 +366,19 @@ input[type="password"] {
 // バリデーションエラーによるレイアウト崩れ防止
 .field_with_errors {
   display: contents;
+}
+
+//admins-edit-customer
+form > .edit-admins-customer > dt {
+  display: inline-block;
+  //margin: 5px 0 10px 20px;
+  font-size: 15px;
+  width: 170px;
+  float: left;
+  clear: both;
+}
+
+form > .edit-admins-customer > dd {
+  font-size: 15px;
+  margin-bottom: 10px;
 }

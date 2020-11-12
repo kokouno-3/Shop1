@@ -8,8 +8,8 @@
   <div class="registations-customer">
       <dt>名前</dt>
       <dd>
-        <%= f.label :"（姓)" %><%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
-        <%= f.label :"（名)" %><%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+        <%= f.label :"（姓)　" %><%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+        <%= f.label :"（名)　" %><%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
       </dd>
     
       <dt>フリガナ</dt>
@@ -20,33 +20,32 @@
     
       <dt>メールアドレス</dt>
       <dd>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "field-under" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "registations-under" %>
       </dd>
-    
     
       <dt>郵便番号(ハイフンなし)</dt>
       <dd>
-        <%= f.text_field :postcode, autofocus: true, autocomplete: "postcode", class: "field-under" %>
+        <%= f.text_field :postcode, autofocus: true, autocomplete: "postcode", class: "registations-under" %>
       </dd>
     
       <dt>住所</dt>
       <dd>
-        <%= f.text_field :address, autofocus: true, autocomplete: "address", class: "field-under" %>
+        <%= f.text_field :address, autofocus: true, autocomplete: "address", class: "registations-under" %>
       </dd>
     
       <dt>電話番号(ハイフンなし)</dt>
       <dd>
-        <%= f.text_field :phonenumber, autofocus: true, autocomplete: "address", class: "field-under" %>
+        <%= f.text_field :phonenumber, autofocus: true, autocomplete: "address", class: "registations-under" %>
       </dd>
     
       <dt>パスワード(6文字以上)</dt>
       <dd> 
-        <%= f.password_field :password, autocomplete: "new-password", class: "field-under" %>
+        <%= f.password_field :password, autocomplete: "new-password", class: "registations-under" %>
       </dd>
     
       <dt>パスワード(確認用)</dt>
       <dd>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "field-under" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "registations-under" %>
       </dd>
       
       <dd>

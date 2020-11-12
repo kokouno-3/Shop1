@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   post 'customers/sign_in',to: 'publics/sessions#create'
   delete 'customers/sign_out',to: 'publics/sessions#destroy'
   get 'customers/password/new', to: 'publics/passwords#new'
+  get 'customers/password/edit', to: 'publics/passwords#edit'
   patch 'customers/password', to: 'publics/passwords#update'
   put 'customers/password', to: 'publics/passwords#update'
   get 'login' => 'publics/sessions#new', as: :new_customer_session
@@ -24,6 +25,7 @@ Rails.application.routes.draw do
   get 'signup' => 'publics/registrations#new', as: :new_customer_registration
   post 'signup' => 'publics/registrations#create', as: :customer_registration
   get 'password' => 'publics/passwords#new', as: :new_customer_password
+  get 'password/edit' => 'publics/passwords#edit', as: :edit_customer_password
   post 'password' => 'publics/passwords#create', as: :customer_password
   end
 
@@ -33,6 +35,7 @@ Rails.application.routes.draw do
   scope module: :publics do
    get "/customers/unsubscribe" => "customers#unsubscribe"
   patch "/customers/withdraw" => "customers#withdraw"
+  get 'password/edit' => 'passwords#edit'
   resources :items, only:[:index, :show]
   get 'genre_items/:id' => "items#genre_items", as: "genre_items"
   get "/orders/complete" => "orders#complete"
