@@ -52,7 +52,6 @@ class Publics::OrdersController < ApplicationController
       @order_detail.save
     end
     current_customer.carts.destroy_all
-    # Address.create!(customer_id: @customer.id, postcode: @order.postcode, address: @order.address, name: @order.name)
   end
 
   def index
