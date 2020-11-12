@@ -27,13 +27,16 @@ Rails.application.routes.draw do
   get 'password' => 'publics/passwords#new', as: :new_customer_password
   get 'password/edit' => 'publics/passwords#edit', as: :edit_customer_password
   post 'password' => 'publics/passwords#create', as: :customer_password
+  #パスワード変更
+  get 'password/:id' => 'publics/registrations#edit', as: :edit_customer_registration
+  patch "password/:id" => 'publics/registrations#update', as: :update_customer_registration
   end
 
   root "publics/homes#top"
   get "/about" => "publics/homes#about"
 
   scope module: :publics do
-   get "/customers/unsubscribe" => "customers#unsubscribe"
+  get "/customers/unsubscribe" => "customers#unsubscribe"
   patch "/customers/withdraw" => "customers#withdraw"
   get 'password/edit' => 'passwords#edit'
   resources :items, only:[:index, :show]

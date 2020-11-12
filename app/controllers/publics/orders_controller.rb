@@ -3,8 +3,8 @@ class Publics::OrdersController < ApplicationController
   layout 'publics/header'
   def new
     @order = Order.new
-    @addresses = Address.all
     @customer = current_customer
+    @addresses = @customer.addresses
   end
 
   def confirm
@@ -23,6 +23,14 @@ class Publics::OrdersController < ApplicationController
       @order.address = @address.address
       @order.name = @address.name
     end
+
+    if params[:order][:order] == "2"
+			@order.postcode = params[:order][:postcode]
+			@order.address = params[:order][:address]
+			@order.name = params[:order][:name]
+		  Address.create!(customer_id: @customer.id, postcode: @order.postcode, address: @order.address, name: @order.name)
+    end
+
   end
 
   def complete
@@ -44,8 +52,6 @@ class Publics::OrdersController < ApplicationController
       @order_detail.save
     end
     current_customer.carts.destroy_all
-
-    Address.create!(customer_id: @customer.id, postcode: @order.postcode, address: @order.address, name: @order.name)
   end
 
   def index

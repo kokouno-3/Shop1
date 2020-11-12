@@ -6,7 +6,7 @@
     <%= render "genre", genres: @genres %>
 </div>
 <div class="col-xs-7" style="margin-top: 80px;">
-  <%= flash[:notice] %>
+  <%= flash[:cart] %>
   <div class="row">
    <div class="col-xs-4">
        <div>
@@ -14,7 +14,7 @@
        </div>
     </div>
 
-  <div class="col-xs-4"  style="margin-left: 150px;">
+  <div class="col-xs-5"  style="margin-left: 150px;">
   <div>
     <h2><%= @item.name %></h2>
     <p><%= @item.explanation %></p>

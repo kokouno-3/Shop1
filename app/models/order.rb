@@ -16,7 +16,7 @@ class Order < ApplicationRecord
     発送準備中: 3,
     発送済み: 4
   }
-  
+
   #validates :order, acceptance: true
   #validates :order, presence: true
   #validates :order, inclusion: {in: [0, 1, 2]}

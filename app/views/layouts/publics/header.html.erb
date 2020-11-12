@@ -46,7 +46,7 @@
                 <%= link_to "About", about_path, class: "btn-square-so-pop" %>
               </li>
               <li class="header-nav">
-                <%= link_to "商品一覧", root_path, class: "btn-square-so-pop" %>
+                <%= link_to "商品一覧", items_path, class: "btn-square-so-pop" %>
               </li>
               <li class="header-nav">
                 <%= link_to "新規登録", customers_sign_up_path, class: "btn-square-so-pop" %>
@@ -64,6 +64,7 @@
     <%= yield %>
     </div>
     </div>
+
     <%= render "layouts/footer" %>
   </body>
 </html>
