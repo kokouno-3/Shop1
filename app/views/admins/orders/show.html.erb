@@ -1,6 +1,6 @@
 <h2 style="margin: 30px 0 50px 100px;">注文履歴詳細画面</h2>
 <div class="row">
-  <div class="col-sm-10">
+  <div class="col-xs-10">
     <table class="table table-cndensed">
       <tr>
         <th style="width:20%">購入者</th>
@@ -28,7 +28,7 @@
     </table>
   </div>
 </div>
-<div class="col-sm-10">
+<div class="col-xs-8">
   <table class="table table-cndensed">
     <thead>
       <tr>
@@ -59,12 +59,12 @@
   </table>
 </div>
 <div class="price_detail">
-  <div class="col-sm-2">
+  <div class="col-xs-2">
     <h4><strong>商品合計</strong></h4>
     <h4><strong>送料</strong></h4>
     <h4><strong>請求金額合計</strong></h4>
   </div>
-  <div class="col-sm-2">
+  <div class="col-xs-2">
     <h4>
       <% @order.order_details.each do |order_detail| %>
         <% sub_total = (order_detail.item.price.*1.1.* order_detail.amount) %>

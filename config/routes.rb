@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   get "/about" => "publics/homes#about"
 
   scope module: :publics do
-   get "/customers/unsubscribe" => "customers#unsubscribe"
+  get "/customers/unsubscribe" => "customers#unsubscribe"
   patch "/customers/withdraw" => "customers#withdraw"
   resources :items, only:[:index, :show]
   get 'genre_items/:id' => "items#genre_items", as: "genre_items"
