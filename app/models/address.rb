@@ -5,6 +5,7 @@ class Address < ApplicationRecord
     postcode + " " + " " + address + " " + " "+ name
   end
 
-  # validates :address, :name, presence: true
-  # validates :postcode, presence: true
+  validates :address, :name, presence: true
+  validates :postcode, presence: true
+
 end

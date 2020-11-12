@@ -10,7 +10,7 @@ class Customer < ApplicationRecord
 
   validates :last_name, presence: true
   validates :first_name, presence: true
-  validates :last_name_kana, presence: true  #全角カタカナのみ入力許可
+  validates :last_name_kana, presence: true
   validates :first_name_kana, presence: true
   validates :postcode, presence: true
   validates :address, presence: true
