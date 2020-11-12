@@ -46,7 +46,7 @@
                 <%= link_to "About", about_path, class: "btn-square-so-pop" %>
               </li>
               <li class="header-nav">
-                <%= link_to "商品一覧", root_path, class: "btn-square-so-pop" %>
+                <%= link_to "商品一覧", items_path, class: "btn-square-so-pop" %>
               </li>
               <li class="header-nav">
                 <%= link_to "新規登録", customers_sign_up_path, class: "btn-square-so-pop" %>
@@ -59,61 +59,13 @@
         </div>
       </nav>
     </header>
-    <div class="background-image">
-      <div class="container">
-        <%= yield %>
-      </div>
-      <div class="header-nav-div">
-        <% if customer_signed_in? %>
 
-          <li class="header-nav">
-            <div class="header-customer-name">
-              WELCOME、<%= @customer.last_name + @customer.first_name %> さん！
-            </div>
-          </li>
-
-          <li class="header-nav">
-            <%= link_to "マイページ", customer_path(current_customer.id), class: "btn-square-so-pop" %>
-          </li>
-
-          <li class="header-nav">
-            <%= link_to "商品一覧", items_path, class: "btn-square-so-pop" %>
-          </li>
-
-          <li class="header-nav">
-            <%= link_to "カート", carts_path, class: "btn-square-so-pop" %>
-          </li>
-
-          <li class="header-nav">
-            <%= link_to "ログアウト", customers_sign_out_path, method: :delete, class: "btn-square-so-pop" %>
-          </li>
-
-        <% else %>
-          <li class="header-nav">
-            <%= link_to "About", about_path, class: "btn-square-so-pop" %>
-          </li>
-
-          <li class="header-nav">
-            <%= link_to "商品一覧", items_path, class: "btn-square-so-pop" %>
-          </li>
-
-          <li class="header-nav">
-            <%= link_to "新規登録", customers_sign_up_path, class: "btn-square-so-pop" %>
-          </li>
-
-          <li class="header-nav">
-            <%= link_to "ログイン", customers_sign_in_path, class: "btn-square-so-pop" %>
-          </li>
-        <% end %>
-      </div>
-   </div>
-    </nav>
-  </header>
   <div class="background-image">
     <div class="container">
     <%= yield %>
     </div>
     </div>
+
     <%= render "layouts/footer" %>
   </body>
 </html>

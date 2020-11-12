@@ -17,3 +17,6 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
+$(function(){
+  $('.home-picture').slideDown(2000);
+});
