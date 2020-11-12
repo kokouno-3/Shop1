@@ -1,24 +1,23 @@
-# README
+# サイト概要
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* サイトテーマ
+ケーキ屋さんを運営しており、元々近隣住⺠が顧客でしたが、昨年始めたInstagramから⼈気となり、
+全国から注⽂が来るようになりました。
+InstagramのDMやメールで通販の注⽂を受けていたのですが、情報管理が煩雑になってきたた
+め、管理機能を含んだ通販サイトを開設しようと思い至りました。
 
-Things you may want to cover:
+* 使用技術
 
-* Ruby version
+* 実装機能
+ *
+ *
+ *
+* 実装する上で苦労した点
 
-* System dependencies
+* 
 
-* Configuration
+* 
 
-* Database creation
+* 作成者
+ 
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
