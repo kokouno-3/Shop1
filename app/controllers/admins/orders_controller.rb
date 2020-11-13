@@ -33,7 +33,6 @@ class Admins::OrdersController < ApplicationController
       OrderDetail.where(order_id: @order.id).update_all(making_status: "製作待ち") #注文ステータスが「入金確認」なら、製作ステータスを「製作待ち」に更新
     end
     redirect_to admins_order_path(@order) #注文詳細へ
-
   end
 
   private

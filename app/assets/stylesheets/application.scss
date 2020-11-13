@@ -50,11 +50,11 @@ h6 {
 }
 
 h6 a {
-		display: block;
-		width: 64px;
-		height: 69px;
-		font-size: 0;
-		background: url(illustrain09-okashi1.png) left top/64px auto no-repeat;
+	display: block;
+	width: 64px;
+	height: 69px;
+	font-size: 0;
+	background: url(illustrain09-okashi1.png) left top/64px auto no-repeat;
 	}
 
 .header-logo {
@@ -165,18 +165,6 @@ h2 {
   margin-bottom: 4px;
 }
 
-//customer
-
-.customer-profile {
-  display: inline-block;
-  font-size: 16px;
-  padding-bottom: 10px;
-}
-
-.unsubscribe-btn {
-  float: right;
-}
-
 //customer-registations
 
 form > .registations-customer > dt {
@@ -205,6 +193,33 @@ form > .registations-customer > dd {
 
 .customer-session-new {
   text-align : center;
+}
+
+//customer-edit
+.publics-edit-customer {
+  width: 55%;
+}
+
+form > .publics-edit-customer > dt {
+  display: inline-block;
+  margin: 5px 0 10px 20px;
+  font-size: 15px;
+  width: 170px;
+  float: left;
+  clear: both;
+}
+
+form > .publics-edit-customer > dd {
+  margin-bottom: 20px;
+}
+
+.publics-edit-customer > dd > .field-under {
+  margin-left: 40px;
+}
+
+.publics-edit-customer > dd > .btn-danger {
+  float: right;
+
 }
 
 //about
@@ -251,7 +266,7 @@ form > .registations-customer > dd {
   margin-top: 200px;
 }
 
-//address
+//address-index
 form > .address-field > div {
   display: inline-block;
   margin: 5px 0 10px 20px;
@@ -316,7 +331,8 @@ footer {
   border-bottom: 2px solid ;
 }
 
-//Admin/session のレイアウト
+///////////////Admin/session のレイアウト/////////////////////
+
 .session-main {
   text-align: center;
 }
@@ -326,14 +342,13 @@ footer {
 }
 
 input[type="email"] {
-        width: 300px;
-        height: 24px;
+  width: 300px;
+  height: 24px;
 }
 
 input[type="password"] {
-        width: 300px;
-        height: 24px;
-
+  width: 300px;
+  height: 24px;
 }
 
 .resister-btn {
@@ -382,6 +397,7 @@ form > .edit-admins-customer > dt {
 form > .edit-admins-customer > dd {
   font-size: 15px;
   margin-bottom: 10px;
+}
 
 .home-picture {
   display: none;

@@ -6,15 +6,15 @@
     </div>
     <div>
       <p><%= item.name %></p>
-      <% if item.is_status == '販売中' %>
+        <% if item.is_status == '販売中' %>
       <p>¥<%= item.price.to_s(:delimited) %></p>
-      <% else item.is_status == '販売中止' %>
+        <% else item.is_status == '販売中止' %>
       <p>売切れ</p>
-      <% end %>
+        <% end %>
     </div>
+    <% end %>
   </div>
-    <% end %>
-    <% end %>
-    <div style="margin-top: 20px;">
-      <%= paginate(@items) %>
-    </div>
+<% end %>
+<div style="margin-top: 20px;">
+  <%= paginate(@items) %>
+</div>

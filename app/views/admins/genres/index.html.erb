@@ -1,36 +1,37 @@
 <h2 style="margin: 30px 0 50px 100px ;">ジャンル一覧・追加</h2>
+
   <div class="row">
-      <%= form_with model: @genre, url: admins_genres_path, local: true do |f| %>
-      <%= render 'layouts/error_messages', model: @genre %>
-      <!--<div class="col-xs-3">-->
-      <div class="genre-container">
-        <p>ジャンル</p>
-          <%= f.text_field :name, class: "form-control" %>
-        <div class="status-btn">
-          <%= f.radio_button :is_status, '有効' %>有効
-        </div>
-        <div class="status-btn">
-          <%= f.radio_button :is_status, '無効' %>無効
-        </div>
-          <%= f.submit "追加", class: "btn btn-primary" %>
+    <%= form_with model: @genre, url: admins_genres_path, local: true do |f| %>
+    <%= render 'layouts/error_messages', model: @genre %>
+    <div class="genre-container">
+      <p>ジャンル</p>
+        <%= f.text_field :name, class: "form-control" %>
+      <div class="status-btn">
+        <%= f.radio_button :is_status, '有効' %>有効
       </div>
-      <% end %>
-        <table class="table table-hover table-inverse" style = "width: 600px; margin-top: 30px;">
-          <thead>
-            <tr>
-              <th>ジャンル</th>
-              <th>状態</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @genres.each do |genre| %>
-            <tr>
-              <td><%= genre.name %></td>
-              <td><%= genre.is_status %></td>
-              <td><%= link_to "編集する", edit_admins_genre_path(genre), class: "glyphicon glyphicon-pencil btn btn-success" %></td>
-            </tr>
-            <% end %>
-          </tbody>
-        </table>
+      <div class="status-btn">
+        <%= f.radio_button :is_status, '無効' %>無効
+      </div>
+        <%= f.submit "追加", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+      
+    <table class="table table-hover table-inverse" style = "width: 600px; margin-top: 30px;">
+      <thead>
+        <tr>
+          <th>ジャンル</th>
+          <th>状態</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @genres.each do |genre| %>
+        <tr>
+          <td><%= genre.name %></td>
+          <td><%= genre.is_status %></td>
+          <td><%= link_to "編集する", edit_admins_genre_path(genre), class: "glyphicon glyphicon-pencil btn btn-success" %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
