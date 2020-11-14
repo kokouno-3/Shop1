@@ -6,6 +6,6 @@ class Genre < ApplicationRecord
     無効: false
   }
 
-  validates :name, presence: true, uniqueness: true
-
+  # バリデーション すでに存在しているジャンルと同じジャンル名であれば保存されない
+  validates :name, uniqueness: true, presence: true
 end

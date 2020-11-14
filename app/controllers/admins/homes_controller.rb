@@ -1,7 +1,9 @@
 class Admins::HomesController < ApplicationController
-    before_action :authenticate_admin!
-   layout 'admins/header'
+  before_action :authenticate_admin!
+  layout 'admins/header'
+  
   def top
-      @orders = Order.all
+    range = Date.today.beginning_of_day..Date.today.end_of_day
+		@orders = Order.where(created_at: range)
   end
 end

@@ -1,6 +1,6 @@
 class Publics::ItemsController < ApplicationController
-  # before_action :authenticate_customer!
   layout 'publics/header'
+  
   def index
     @items = Item.all.page(params[:page]).per(8)
     @customer = current_customer
@@ -10,13 +10,18 @@ class Publics::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @genres = Genre.all
     @cart = Cart.new
+    if @cart.amount == "個数選択"
+      redirect_to item_path(item)
+    end
     @customer = current_customer
   end
 
   def genre_items
     @genre = Genre.find(params[:id])
     @items = @genre.items.all
+    @items = @items.page(params[:page])
     @customer = current_customer
+    @items = @items.page(params[:page])
   end
 
   private

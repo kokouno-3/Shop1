@@ -7,31 +7,29 @@ class Publics::CartsController < ApplicationController
     @carts = @customer.carts.all
     @cart = current_customer.carts.find_by(item_id: params[:item_id])
     @total = 0
-    #@item = @cart.item
   end
 
   def create
     @customer = current_customer
-    @item = Item.find(params[:cart][:item_id]) # findでparamsの、cartモデルのitem_idを探す
+      # findでparamsの、cartモデルのitem_idを探す
     if Cart.exists?(item_id: @item, customer_id: @customer) # exists?でitem_idとcustomer_idが存在するかを確認する
       @cart = Cart.find_by(item_id: @item.id, customer_id: @customer) # find_byでカートに存在するitem_idとcustomer_idを探す
       @cart.amount += params[:cart][:amount].to_i # カートに存在する商品の数量@cart.amountにparamsでcartモデルのamountを足し、代入する。
       @cart.update(amount: @cart.amount) # 上の行で定義した@cart.amountをupdateする
-    # if current_customer.carts.find_by(item_id: params[:item_id]).present?
-    # @cart = current_customer.carts.find_by(item_id: params[:item_id])
-    # @cart.amount += params[:cart][:amount].to_i
-    # @cart.update(amount: @cart.amount)
       redirect_to carts_path
     else
       @cart = Cart.new(cart_params)
       @cart.customer_id = current_customer.id
-      @cart.save
-      redirect_to carts_path
+      if @cart.save
+        redirect_to carts_path
+      else
+        flash[:cart] = "カートに入れる個数を入力してください"
+        redirect_back(fallback_location: root_path)
+      end
     end
   end
 
   def update
-    # @cart = current_customer.carts.find_by(item_id: params[:item_id])
     @cart = Cart.find(params[:id])
     @cart.update(cart_params)
     if @cart.amount == 0
@@ -47,12 +45,9 @@ class Publics::CartsController < ApplicationController
   end
 
   def destroy_all
-    # @cart = Cart.find(params[:id])
     current_customer.carts.destroy_all
     redirect_to carts_path
   end
-
-
 
   private
   def cart_params

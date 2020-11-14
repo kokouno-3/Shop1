@@ -20,12 +20,12 @@ class Publics::SessionsController < Devise::SessionsController
   # end
 
   #退会ユーザーはログイン不可
-  before_action :reject_customers, only: [:create]
+  before_action :reject_customer, only: [:create]
   protected
-    def reject_customers
+    def reject_customer
       @customer = Customer.find_by(email: params[:customer][:email].downcase)
       if @customer
-        if (@customer.valid_password?(params[:customer][:password]) && (@customer.active_for_authentication? == '退会済み'))
+        if (@customer.valid_password?(params[:customer][:encrypted_password]) && (@customer.active_for_authentication? == '退会済み'))
           flash[:error] = "退会済みです。"
           redirect_to new_customer_session_path
         end

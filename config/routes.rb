@@ -16,15 +16,21 @@ Rails.application.routes.draw do
   get 'customers/sign_in',to: 'publics/sessions#new'
   post 'customers/sign_in',to: 'publics/sessions#create'
   delete 'customers/sign_out',to: 'publics/sessions#destroy'
-  get 'customers/password/edit', to: 'devise/passwords#edit'
-  patch '/customers/password', to: 'devise/passwords#update'
-  put '/customers/password', to: 'devise/passwords#update'
+  get 'customers/password/new', to: 'publics/passwords#new'
+  get 'customers/password/edit', to: 'publics/passwords#edit'
+  patch 'customers/password', to: 'publics/passwords#update'
+  put 'customers/password', to: 'publics/passwords#update'
   get 'login' => 'publics/sessions#new', as: :new_customer_session
   post 'login' => 'publics/sessions#create', as: :customer_session
   get 'signup' => 'publics/registrations#new', as: :new_customer_registration
   post 'signup' => 'publics/registrations#create', as: :customer_registration
   get 'password' => 'publics/passwords#new', as: :new_customer_password
+  get 'password/edit' => 'publics/passwords#edit', as: :edit_customer_password
   post 'password' => 'publics/passwords#create', as: :customer_password
+  #パスワード変更
+  get 'password/:id' => 'publics/registrations#edit', as: :edit_customer_registration
+  patch "password/:id" => 'publics/registrations#update', as: :update_customer_registration
+
   end
 
   root "publics/homes#top"
@@ -32,6 +38,9 @@ Rails.application.routes.draw do
   get "/customers/unsubscribe" => "publics/customers#unsubscribe"
   patch "/customers/withdraw" => "publics/customers#withdraw"
   scope module: :publics do
+  get "/customers/unsubscribe" => "customers#unsubscribe"
+  patch "/customers/withdraw" => "customers#withdraw"
+  get 'password/edit' => 'passwords#edit'
   resources :items, only:[:index, :show]
   get 'genre_items/:id' => "items#genre_items", as: "genre_items"
   get "/orders/complete" => "orders#complete"
@@ -41,9 +50,7 @@ Rails.application.routes.draw do
   resources :carts, only:[:index, :update, :destroy, :create]
   resources :customers, only:[:edit, :show, :update]
   resources :addresses, only:[:index, :create, :edit, :destroy, :update]
-
   end
-
 
   namespace :admins do
   get "/" => "homes#top"
@@ -57,45 +64,3 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
-
-
-
-
-
- #get 'order_details/update'
-  #get 'items/index'
-  #get 'items/new'
-  #get 'items/create'
-  #get 'items/show'
-  #get 'items/edit'
-  #get 'items/update'
-  #get 'orders/index'
-  #get 'orders/show'
-  #get 'genres/index'
-  #get 'genres/create'
-  #get 'genres/edit'
-  #get 'genres/update'
-  #get 'customers/index'
-  #get 'customers/show'
-  #get 'customers/edit'
-  #get 'customers/update'
-  #get 'homes/top'
-  #get 'homes/about'
-  #get 'addresses/index'
-  #get 'addresses/create'
-  #get 'addresses/edit'
-  #get 'addresses/destroy'
-  #get 'addresses/update'
-  #get 'orders/new'
-  #get 'orders/comfirm'
-  #get 'orders/complete'
-  #get 'orders/create'
-  #get 'orders/index'
-  #get 'orders/show'
-  #get 'carts/index'
-  #get 'carts/update'
-  #get 'carts/destroy'
-  #get 'carts/destroy_all'
-  #get 'carts/create'
-  #get 'items/index'
-  #get 'items/show'

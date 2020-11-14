@@ -1,9 +1,21 @@
 class Admins::OrdersController < ApplicationController
   before_action :authenticate_admin!
-   layout 'admins/header'
+  layout 'admins/header'
   def index
-    @orders = Order.all.page(params[:page]).per(10)
     @customer = current_customer
+    customer = params[:customer_id]
+    if @orders = params[:customer_id]
+      order = Order.where(customer_id: customer).all
+      orders = order.all.reverse_order
+    elsif @orders = params[:created_at]
+      range = Date.today.beginning_of_day..Date.today.end_of_day
+      order = Order.where(created_at: range)
+      orders = order.all.reverse_order
+    else
+      @orders = Order.all
+      orders = Order.all.reverse_order
+    end 
+      @orders = orders.page(params[:page]).per(10)
   end
 
   def show
@@ -21,7 +33,6 @@ class Admins::OrdersController < ApplicationController
       OrderDetail.where(order_id: @order.id).update_all(making_status: "製作待ち") #注文ステータスが「入金確認」なら、製作ステータスを「製作待ち」に更新
     end
     redirect_to admins_order_path(@order) #注文詳細へ
-
   end
 
   private

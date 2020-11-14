@@ -3,8 +3,8 @@ class Publics::OrdersController < ApplicationController
   layout 'publics/header'
   def new
     @order = Order.new
-    @addresses = Address.all
     @customer = current_customer
+    @addresses = @customer.addresses
   end
 
   def confirm
@@ -13,17 +13,22 @@ class Publics::OrdersController < ApplicationController
     @carts = @customer.carts.all
     @cart = current_customer.carts.find_by(item_id: params[:item_id])
     @total = 0
-
-      if params[:order][:order] == "0"
-        @order.postcode = @customer.postcode
-        @order.address = @customer.address
-        @order.name = @customer.last_name + @customer.first_name
-      elsif params[:order][:order] == "1"
-        @address = Address.find(params[:order][:id])
-        @order.postcode = @address.postcode
-        @order.address = @address.address
-        @order.name = @address.name
-      end
+    if params[:order][:order] == "0"
+      @order.postcode = @customer.postcode
+      @order.address = @customer.address
+      @order.name = @customer.last_name + @customer.first_name
+    elsif params[:order][:order] == "1"
+      @address = Address.find(params[:order][:id])
+      @order.postcode = @address.postcode
+      @order.address = @address.address
+      @order.name = @address.name
+    end
+    if params[:order][:order] == "2"
+			@order.postcode = params[:order][:postcode]
+			@order.address = params[:order][:address]
+			@order.name = params[:order][:name]
+		  Address.create!(customer_id: @customer.id, postcode: @order.postcode, address: @order.address, name: @order.name)
+    end
   end
 
   def complete
@@ -62,7 +67,6 @@ class Publics::OrdersController < ApplicationController
   end
 
   private
-
   def order_params
     params.require(:order).permit(:postcode, :address, :name, :customer_id, :shipping_cost, :pay_money, :pay_way, :status, :shipping_info)
   end

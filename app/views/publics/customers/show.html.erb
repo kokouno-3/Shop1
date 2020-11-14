@@ -1,49 +1,39 @@
 <br>
 <br>
 <br>
-<h2>マイページ</h2>
-<br>
+<h2>マイページ</h2><br>
 <h3 style="display:inline-block;">登録情報　</h3>
-<%= link_to "編集する", edit_customer_path, class: "btn btn-primary" %>
-<%= link_to "パスワードを変更する", "#", class: "btn btn-primary" %>
-
-<table class="table table-bordered" style="width:60%;">
-  <tbody>
-    <tr>
-      <th style="width: 20%;"><h4>氏名</h4></th>
-      <td style="width: 30%;"><p><%= @customer.last_name %><%= @customer.first_name %></p></td>
-    </tr>
-
-    <tr>
-      <th><h4>カナ</h4></th>
-      <td><p><%= @customer.last_name_kana %><%= @customer.first_name_kana %></p></td>
-    </tr>
-
-    <tr>
-      <th><h4>郵便番号</h4></th>
-      <td><p><%= @customer.postcode %></p></td>
-    </tr>
-
-    <tr>
-      <th><h4>住所</h4></th>
-      <td><p><%= @customer.address %></p></td>
-    </tr>
-
-    <tr>
-      <th><h4>電話番号</h4></th>
-      <td><p><%= @customer.phonenumber %></p></td>
-    </tr>
-
-    <tr>
-      <th><h4>メールアドレス</h4></th>
-      <td><p><%= @customer.email %></p></td>
-    </tr>
-
-  </tbody>
-</table>
-
-<h4 style="display:inline-block;">配送先　　</h4>
-<%= link_to "一覧を見る", addresses_path, class: "btn btn-primary" %>
-<br>
-<h4 style="display:inline-block;">注文履歴　</h4>
-<%= link_to "一覧を見る", orders_path, class: "btn btn-primary" %>
+  <%= link_to "編集する", edit_customer_path, class: "btn btn-primary" %>
+  <%= link_to "パスワードを変更する", edit_customer_registration_path, class: "btn btn-primary" %>
+  <table class="table table-bordered" style="width:60%;">
+    <tbody>
+      <tr>
+        <th style="width: 20%;"><h4>氏名</h4></th>
+        <td style="width: 30%;"><p><%= @customer.last_name %><%= @customer.first_name %></p></td>
+      </tr>
+      <tr>
+        <th><h4>カナ</h4></th>
+        <td><p><%= @customer.last_name_kana %><%= @customer.first_name_kana %></p></td>
+      </tr>
+      <tr>
+        <th><h4>郵便番号</h4></th>
+        <td><p><%= @customer.postcode %></p></td>
+      </tr>
+      <tr>
+        <th><h4>住所</h4></th>
+        <td><p><%= @customer.address %></p></td>
+      </tr>
+      <tr>
+        <th><h4>電話番号</h4></th>
+        <td><p><%= @customer.phonenumber %></p></td>
+      </tr>
+      <tr>
+        <th><h4>メールアドレス</h4></th>
+        <td><p><%= @customer.email %></p></td>
+      </tr>
+    </tbody>
+  </table>
+  <h4 style="display:inline-block;">配送先　　</h4>
+    <%= link_to "一覧を見る", addresses_path, class: "btn btn-primary" %><br>
+    <h4 style="display:inline-block;">注文履歴　</h4>
+      <%= link_to "一覧を見る", orders_path, class: "btn btn-primary" %>
