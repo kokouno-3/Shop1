@@ -1,6 +1,6 @@
 class Admins::OrderDetailsController < ApplicationController
-    before_action :authenticate_admin!
-   layout 'admins/header'
+  before_action :authenticate_admin!
+  layout 'admins/header'
   
   def update
     @order_detail = OrderDetail.find(params[:id])

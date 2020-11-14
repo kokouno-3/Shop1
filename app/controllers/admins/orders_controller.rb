@@ -34,7 +34,7 @@ class Admins::OrdersController < ApplicationController
     end
     redirect_to admins_order_path(@order) #注文詳細へ
   end
-
+  
   private
   def order_params
     params.require(:order).permit(:customer_id, :shipping_cost, :pay_money, :pay_way, :name, :postcode, :address, :status)
