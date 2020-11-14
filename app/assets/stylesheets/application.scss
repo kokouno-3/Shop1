@@ -150,8 +150,21 @@ h2 {
   display: inline-block;
 }
 
-//cart
+.field_with_errors { // バリデーションエラーによるレイアウト崩れ防止
+  display: contents;
+}
 
+input[type="email"] {
+  width: 300px;
+  height: 24px;
+}
+
+input[type="password"] {
+  width: 300px;
+  height: 24px;
+}
+
+//cart
 .destroy_all {
   float: right;
 }
@@ -165,8 +178,7 @@ h2 {
   margin-bottom: 4px;
 }
 
-//customer-registations
-
+//customer-registrations
 form > .registations-customer > dt {
   display: inline-block;
   margin: 5px 0 10px 20px;
@@ -189,8 +201,12 @@ form > .registations-customer > dd {
   text-align: center;
 }
 
-//customer-sessions
+//registration-edit
+.password-field {
+  margin-top: 5px;
+}
 
+//customer-sessions
 .customer-session-new {
   text-align : center;
 }
@@ -219,11 +235,14 @@ form > .publics-edit-customer > dd {
 
 .publics-edit-customer > dd > .btn-danger {
   float: right;
+}
 
+//top
+.home-picture {
+  display: none;
 }
 
 //about
-
 .about {
   text-align: center;
 }
@@ -243,7 +262,6 @@ form > .publics-edit-customer > dd {
 }
 
 //orders-new
-
 .field-tag {
   margin: 0 0 5px 20px;
   width: 60%;
@@ -254,7 +272,6 @@ form > .publics-edit-customer > dd {
 }
 
 //orders-confirm
-
 .order-success {
   text-align: center;
 }
@@ -303,7 +320,6 @@ form > .edit-address > dt {
 }
 
 //unsubscribe
-
 .unsubscribe-main{
   text-align: center;
   margin-top: 100px;
@@ -331,8 +347,9 @@ footer {
   border-bottom: 2px solid ;
 }
 
-///////////////Admin/session のレイアウト/////////////////////
+///////////////Adminsのレイアウト/////////////////////
 
+//sessiton
 .session-main {
   text-align: center;
 }
@@ -341,22 +358,8 @@ footer {
   margin-top: 20px;
 }
 
-input[type="email"] {
-  width: 300px;
-  height: 24px;
-}
-
-input[type="password"] {
-  width: 300px;
-  height: 24px;
-}
-
-.resister-btn {
-  float: righ;
-}
-
+//item
 .item-container {
-  //float: left;
   margin-right: 20px;
 }
 
@@ -379,15 +382,9 @@ input[type="password"] {
   margin-left: 5px;
 }
 
-// バリデーションエラーによるレイアウト崩れ防止
-.field_with_errors {
-  display: contents;
-}
-
 //admins-edit-customer
 form > .edit-admins-customer > dt {
   display: inline-block;
-  //margin: 5px 0 10px 20px;
   font-size: 15px;
   width: 170px;
   float: left;
@@ -399,10 +396,7 @@ form > .edit-admins-customer > dd {
   margin-bottom: 10px;
 }
 
-.home-picture {
-  display: none;
-}
-
-.password-field {
-  margin-top: 5px;
+//その他
+.resister-btn {
+  float: righ;
 }
