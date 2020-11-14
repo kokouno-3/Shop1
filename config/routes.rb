@@ -30,11 +30,13 @@ Rails.application.routes.draw do
   #パスワード変更
   get 'password/:id' => 'publics/registrations#edit', as: :edit_customer_registration
   patch "password/:id" => 'publics/registrations#update', as: :update_customer_registration
+
   end
 
   root "publics/homes#top"
   get "/about" => "publics/homes#about"
-
+  get "/customers/unsubscribe" => "publics/customers#unsubscribe"
+  patch "/customers/withdraw" => "publics/customers#withdraw"
   scope module: :publics do
   get "/customers/unsubscribe" => "customers#unsubscribe"
   patch "/customers/withdraw" => "customers#withdraw"
@@ -50,8 +52,6 @@ Rails.application.routes.draw do
   resources :addresses, only:[:index, :create, :edit, :destroy, :update]
   end
 
-
-
   namespace :admins do
   get "/" => "homes#top"
   resources :customers, only:[:index, :show, :edit, :update]
@@ -64,45 +64,3 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
-
-
-
-
-
- #get 'order_details/update'
-  #get 'items/index'
-  #get 'items/new'
-  #get 'items/create'
-  #get 'items/show'
-  #get 'items/edit'
-  #get 'items/update'
-  #get 'orders/index'
-  #get 'orders/show'
-  #get 'genres/index'
-  #get 'genres/create'
-  #get 'genres/edit'
-  #get 'genres/update'
-  #get 'customers/index'
-  #get 'customers/show'
-  #get 'customers/edit'
-  #get 'customers/update'
-  #get 'homes/top'
-  #get 'homes/about'
-  #get 'addresses/index'
-  #get 'addresses/create'
-  #get 'addresses/edit'
-  #get 'addresses/destroy'
-  #get 'addresses/update'
-  #get 'orders/new'
-  #get 'orders/comfirm'
-  #get 'orders/complete'
-  #get 'orders/create'
-  #get 'orders/index'
-  #get 'orders/show'
-  #get 'carts/index'
-  #get 'carts/update'
-  #get 'carts/destroy'
-  #get 'carts/destroy_all'
-  #get 'carts/create'
-  #get 'items/index'
-  #get 'items/show'

@@ -1,6 +1,7 @@
 class Admins::OrderDetailsController < ApplicationController
-  before_action :authenticate_admin!
-  layout 'admins/header'
+    before_action :authenticate_admin!
+   layout 'admins/header'
+  
   def update
     @order_detail = OrderDetail.find(params[:id])
     @order = @order_detail.order #注文ステータスを更新するためにordersテーブルを呼び出す
@@ -19,4 +20,6 @@ class Admins::OrderDetailsController < ApplicationController
   def order_detail_params
     params.require(:order_detail).permit(:making_status)
   end
+
 end
+

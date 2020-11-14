@@ -3,6 +3,7 @@
 <br>
 <div class="customer-session-new">
 <h2>会員の方はこちらからログイン</h2>
+<%= flash[:error] %>
 <%= form_with model: @customer, url: customers_sign_in_path, local: true do |f| %>
   <%= flash[:error] %>
   <div class="field-customer-session">
