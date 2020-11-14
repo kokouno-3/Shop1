@@ -3,7 +3,8 @@ class Publics::AddressesController < ApplicationController
 
   layout 'publics/header'
   def index
-    @addresses = Address.all
+    address = current_customer.addresses.all
+    @addresses = address.page(params[:page]).per(6)
     @address = Address.new
     @customer = current_customer
   end
@@ -14,8 +15,8 @@ class Publics::AddressesController < ApplicationController
     if @address.save
       redirect_to addresses_path #(@address.id)
     else
-       @addresses = Address.all
-       @customer = current_customer
+      @addresses = Address.all
+      @customer = current_customer
       render :index
     end
   end

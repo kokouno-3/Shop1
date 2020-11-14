@@ -21,7 +21,9 @@
       </div>
       <div><%= f.radio_button :order, 1 %>登録済住所から選択</div>
            <%= f.collection_select :id, @addresses, :id, :shipping_info %>
+           
       <div><%= f.radio_button :order, 2 %>新しいお届け先</div>
+      
       <div>郵便番号(ハイフンなし)
         <%= f.text_field :postcode, autofocus: true, autocomplete: "postcode" %>
       </div><br>
@@ -31,6 +33,7 @@
       <div>宛名
         <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
       </div>
+      
       <div class="actions" style="text-align:center">
         <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
       </div>

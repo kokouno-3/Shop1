@@ -5,10 +5,13 @@
 <%= form_with model: @address, url: addresses_path(@address.id), class: "form", local: true do |f| %>
 <%= render 'layouts/error_messages', model: @address %>
   <div class="address-field">
+    
     <div>郵便番号(ハイフンなし)</div>
       <dd><%= f.text_field :postcode %></dd><br>
+      
     <div>住所</div>
       <dd><%= f.text_field :address %></dd><br>
+      
     <div>宛名</div>
       <dd><%= f.text_field :name %></dd>
       <dd><%= f.submit '登録する', class: "btn btn-success", style: "margin:20px 0 0 100px;" %></dd>
@@ -33,7 +36,7 @@
           <%= link_to "削除する", address_path(id: current_customer.id), method: :delete %>
         </td>
       </tr>
-      <% @customer.addresses.each do |address| %>
+      <% @addresses.each do |address| %>
       <tr>
         <td><%= address.postcode %></td>
         <td><%= address.address %></td>
@@ -46,4 +49,7 @@
       <% end %>
     </tbody>
   </table>
+  <div class="paginate1">
+    <%= paginate @addresses %>
+  </div>
 

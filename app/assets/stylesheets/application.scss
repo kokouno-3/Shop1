@@ -50,11 +50,11 @@ h6 {
 }
 
 h6 a {
-		display: block;
-		width: 64px;
-		height: 69px;
-		font-size: 0;
-		background: url(illustrain09-okashi1.png) left top/64px auto no-repeat;
+	display: block;
+	width: 64px;
+	height: 69px;
+	font-size: 0;
+	background: url(illustrain09-okashi1.png) left top/64px auto no-repeat;
 	}
 
 .header-logo {
@@ -150,8 +150,21 @@ h2 {
   display: inline-block;
 }
 
-//cart
+.field_with_errors { // バリデーションエラーによるレイアウト崩れ防止
+  display: contents;
+}
 
+input[type="email"] {
+  width: 300px;
+  height: 24px;
+}
+
+input[type="password"] {
+  width: 300px;
+  height: 24px;
+}
+
+//cart
 .destroy_all {
   float: right;
 }
@@ -165,20 +178,7 @@ h2 {
   margin-bottom: 4px;
 }
 
-//customer
-
-.customer-profile {
-  display: inline-block;
-  font-size: 16px;
-  padding-bottom: 10px;
-}
-
-.unsubscribe-btn {
-  float: right;
-}
-
-//customer-registations
-
+//customer-registrations
 form > .registations-customer > dt {
   display: inline-block;
   margin: 5px 0 10px 20px;
@@ -201,14 +201,48 @@ form > .registations-customer > dd {
   text-align: center;
 }
 
-//customer-sessions
+//registration-edit
+.password-field {
+  margin-top: 5px;
+}
 
+//customer-sessions
 .customer-session-new {
   text-align : center;
 }
 
-//about
+//customer-edit
+.publics-edit-customer {
+  width: 55%;
+}
 
+form > .publics-edit-customer > dt {
+  display: inline-block;
+  margin: 5px 0 10px 20px;
+  font-size: 15px;
+  width: 170px;
+  float: left;
+  clear: both;
+}
+
+form > .publics-edit-customer > dd {
+  margin-bottom: 20px;
+}
+
+.publics-edit-customer > dd > .field-under {
+  margin-left: 40px;
+}
+
+.publics-edit-customer > dd > .btn-danger {
+  float: right;
+}
+
+//top
+.home-picture {
+  display: none;
+}
+
+//about
 .about {
   text-align: center;
 }
@@ -228,7 +262,6 @@ form > .registations-customer > dd {
 }
 
 //orders-new
-
 .field-tag {
   margin: 0 0 5px 20px;
   width: 60%;
@@ -239,7 +272,6 @@ form > .registations-customer > dd {
 }
 
 //orders-confirm
-
 .order-success {
   text-align: center;
 }
@@ -251,7 +283,7 @@ form > .registations-customer > dd {
   margin-top: 200px;
 }
 
-//address
+//address-index
 form > .address-field > div {
   display: inline-block;
   margin: 5px 0 10px 20px;
@@ -288,7 +320,6 @@ form > .edit-address > dt {
 }
 
 //unsubscribe
-
 .unsubscribe-main{
   text-align: center;
   margin-top: 100px;
@@ -316,7 +347,9 @@ footer {
   border-bottom: 2px solid ;
 }
 
-//Admin/session のレイアウト
+///////////////Adminsのレイアウト/////////////////////
+
+//sessiton
 .session-main {
   text-align: center;
 }
@@ -325,23 +358,8 @@ footer {
   margin-top: 20px;
 }
 
-input[type="email"] {
-        width: 300px;
-        height: 24px;
-}
-
-input[type="password"] {
-        width: 300px;
-        height: 24px;
-
-}
-
-.resister-btn {
-  float: righ;
-}
-
+//item
 .item-container {
-  //float: left;
   margin-right: 20px;
 }
 
@@ -364,15 +382,9 @@ input[type="password"] {
   margin-left: 5px;
 }
 
-// バリデーションエラーによるレイアウト崩れ防止
-.field_with_errors {
-  display: contents;
-}
-
 //admins-edit-customer
 form > .edit-admins-customer > dt {
   display: inline-block;
-  //margin: 5px 0 10px 20px;
   font-size: 15px;
   width: 170px;
   float: left;
@@ -384,10 +396,9 @@ form > .edit-admins-customer > dd {
   margin-bottom: 10px;
 }
 
-.home-picture {
-  display: none;
 }
 
-.password-field {
-  margin-top: 5px;
+//その他
+.resister-btn {
+  float: righ;
 }

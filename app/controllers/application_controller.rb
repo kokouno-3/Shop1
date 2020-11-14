@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller? #(customer側の新規登録情報を保存)
-  helper_method :current_cart
 
   def after_sign_out_path_for(resource_or_scope)
     if resource_or_scope == :admin
