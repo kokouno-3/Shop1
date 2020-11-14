@@ -15,19 +15,18 @@
       <%= f.label :現在のパスワード %><br />
       <%= f.password_field :current_password, autocomplete: "current-password" %>
     </div>
-     <div class="password-field">
+    <div class="password-field">
       <%= f.label :新しいパスワード %> <br />
       <%= f.password_field :password, autocomplete: "new-password" %>
   <% if @minimum_password_length %>
-      <br />
+    <br />
   <% end %>
-     </div>
-  <div class="password-field">
-    <%= f.label :新しいパスワードの確認 %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "パスワードを更新する", class: "btn btn-primary" %>
-  </div>
-<% end %>
+    </div>
+    <div class="password-field">
+      <%= f.label :新しいパスワードの確認 %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+    <div class="actions">
+      <%= f.submit "パスワードを更新する", class: "btn btn-primary" %>
+    </div>
+  <% end %>

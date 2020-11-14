@@ -23,7 +23,6 @@ class Publics::OrdersController < ApplicationController
       @order.address = @address.address
       @order.name = @address.name
     end
-
     if params[:order][:order] == "2"
 			@order.postcode = params[:order][:postcode]
 			@order.address = params[:order][:address]
@@ -68,7 +67,6 @@ class Publics::OrdersController < ApplicationController
   end
 
   private
-
   def order_params
     params.require(:order).permit(:postcode, :address, :name, :customer_id, :shipping_cost, :pay_money, :pay_way, :status, :shipping_info)
   end
