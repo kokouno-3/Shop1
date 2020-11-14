@@ -3,10 +3,26 @@
     <%= form_with model: @item, url: admins_item_path(@item), local: true do |f| %>
     <%= render 'layouts/error_messages', model: f.object %>
     <div class="col-xs-4">
-      <div class="img_field">
-        <%= attachment_image_tag(@item, :image, size: "250x250", format: 'jpeg', fallback: "no-image.png") %>
-        <%= f.attachment_field :image %>
-      </div>
+      <div class="item_image">
+		    <%= attachment_image_tag @item, :image, class: "img", fallback: "no-image.png", size:"300x300" %>
+				<%= f.attachment_field :image %>
+			</div>
+			<!-- 画像プレビュー -->
+			<script>
+			   $(function(){
+			     //inputのidから情報を取得
+		       	$('#item_image').on('change', function (e) {
+		       	  // ココから既存の画像のurlの取得
+		       		var reader = new FileReader();
+		    		reader.onload = function (e) {
+		    			$(".image").attr('src', e.target.result);
+		    		}
+		    		// ココまで
+		    		reader.readAsDataURL(e.target.files[0]);
+		    		// 取得したurlにアップロード画像のurlを取得
+	          });
+	        });
+		    </script>
     </div>
     
     <div class="col-xs-3">

@@ -20,41 +20,41 @@
 		    		// ココまで
 		    		reader.readAsDataURL(e.target.files[0]);
 		    		// 取得したurlにアップロード画像のurlを取得
-		    	});
-		       });
-		  </script>
-		</div>
-		
-    <div class="col-xs-7">
-      <h4>商品名</h4>
-      <div class="item-form">
-        <%= f.text_field :name, class:"form-control" %>
+	          });
+	        });
+		    </script>
       </div>
-      
-      <h4>商品説明</h4>
-      <div class="item-explanation">
-        <%= f.text_area :explanation, class:"form-control"  %>
+
+      <div class="col-xs-7">
+        <h4>商品名</h4>
+        <div class="item-form">
+          <%= f.text_field :name, class:"form-control" %>
+        </div>
+
+        <h4>商品説明</h4>
+        <div class="item-explanation">
+          <%= f.text_area :explanation, class:"form-control"  %>
+        </div>
+
+        <h4>ジャンル</h4>
+        <div class="item-genre">
+          <%= f.collection_select(:genre_id, Genre.all, :id, :name, {prompt: "選択してください"}) %>
+        </div>
+
+        <h4>税抜価格</h4>
+        <div class="item-price-container">
+          <div><%= f.text_field :price, class:"form-control" %></div>
+          <div class="item-price">円</div>
+        </div>
+
+        <h4>販売ステータス</h4>
+        <div class="item-status">
+          <%= f.select :is_status, [['販売中','販売中'],['販売中止', '販売中止']], {prompt: "選択してください"} %>
+        </div>
+
+        <div style="padding-top:10px;">
+          <%= f.submit "新規登録", class: "btn btn-primary" %>
+        </div>
       </div>
-      
-      <h4>ジャンル</h4>
-      <div class="item-genre">
-        <%= f.collection_select(:genre_id, Genre.all, :id, :name, {prompt: "選択してください"}) %>
-      </div>
-      
-      <h4>税抜価格</h4>
-      <div class="item-price-container">
-        <div><%= f.text_field :price, class:"form-control" %></div>
-        <div class="item-price">円</div>
-      </div>
-      
-      <h4>販売ステータス</h4>
-      <div class="item-status">
-        <%= f.select :is_status, [['販売中','販売中'],['販売中止', '販売中止']], {prompt: "選択してください"} %>
-      </div>
-      
-      <div style="padding-top:10px;">
-        <%= f.submit "新規登録", class: "btn btn-primary" %>
-      </div>
+      <% end %>
     </div>
-    <% end %>
-  </div>
