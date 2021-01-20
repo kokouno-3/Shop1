@@ -17,6 +17,8 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
-$(function(){
-  $('.home-picture').slideDown(2000);
+$(document).on('turbolinks:load', function() {
+  $(function(){
+    $('.home-picture').slideDown(2000);
+  });
 });
